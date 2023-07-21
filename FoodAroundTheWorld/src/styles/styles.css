@@ -8,7 +8,7 @@ header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem;
+    padding: 20px;
 }
 
 h1 {
@@ -23,27 +23,3 @@ h1 {
     justify-content: center;
     margin-top: 2rem;
 }
-
-#buttons {
-
-}
-
-
-// inline styling from GPT
-
-// body {
-//     font-family: Arial, sans-serif;
-//     margin: 0;
-//     padding: 0;
-// }
-// #header {
-//     background-color: #333;
-//     color: #fff;
-//     padding: 20px;
-//     text-align: center;
-// }
-// #map {
-//     width: 100%;
-//     max-width: 800px;
-//     margin: 0 auto;
-// }

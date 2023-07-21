@@ -6,10 +6,42 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./dist/main.js" defer></script>
-    <link>
-    <title>Document</title>
+    <title>Food Around the World</title>
 </head>
 <body>
-    <div class="js-container"></div>
+    <div id="header">
+        <h1>Food Around the World</h1>
+    </div>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        #map {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        } */
+    </style>
+     <div id="map">
+        <!-- You can replace the image URL below with an interactive map implementation. -->
+        <img src="https://via.placeholder.com/800x400" alt="World Map">
+    </div>
+   
+    <div id="buttons">
+        <input class="category" type="submit" value="3-Course Meal for Two"></input>
+        <input class="category" type="submit" value="Inexpensive Meal"></input>
+        <input class="category" type="submit" value="Cappuccino"></input>
+        <input class="category" type="submit" value="Dozen Eggs"></input>
+        <input class="category" type="submit" value="1 Kg Tomatoes"></input>
+    </div>
+
 </body>
 </html>
