@@ -19,11 +19,11 @@ In addition, this project will include:
 - An About describing the orginstory of how this app came about
 - A production README
 
-Wireframe:
-https://www.figma.com/file/sQfN6DEKoVQBoxqO16d0eQ/Untitled?type=whiteboard&node-id=0-1&t=kyfI95sAKsyyj8dA-0
+![Wireframe](https://github.com/Asyan77/js-project/assets/124006803/e65e3bee-e7a8-4bcd-9b92-705a821bbac3)
+
 
 Technologies, Libraries, APIs:
-This app will likely be using D3 to render the map with locations and API data from Traveltables for all the prices
+-RMaps, Leaflet, svgMAP, or  D3 to render the map with locations and API data from Traveltables for all the prices
 
 Friday Afternoon & Weekend: researching about how to use API and D3 and hopefully start to make the basic outline of the pages structure.
 

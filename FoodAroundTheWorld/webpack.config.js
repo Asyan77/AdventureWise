@@ -14,7 +14,12 @@ const config = {
     rules: [
       {
         test: /\.js$/, // applies to js files
-        use: ['babel-loader'], // transpiles your js
+        use: {loader: "babel-loader", 
+        options: {
+          presets: ["@babel/preset-env"]
+        }
+      },
+        //  ['babel-loader'], // transpiles your js
         exclude: /node_modules/, // don't transpile node modules
       },
       {
@@ -32,3 +37,13 @@ const config = {
   },
   plugins: [new MiniCssExtractPlugin()]
 };
+
+
+// module.exports = (env, argv) => {
+//   if (argv.mode === "production" ) {
+//     config.devtool = "source-map";  
+//   } else {
+//     config.devtool = "eval.sourcemap";
+//   }
+//   return config; 
+// }
