@@ -26,7 +26,8 @@ import svgMap from 'svgmap';
 // test()
 
 
-const url = 'https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=Taipei&country_name=Taiwan';
+// const url = 'https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=Taipei&country_name=Taiwan';
+const url = 'https://cost-of-living-and-prices.p.rapidapi.com/cities';
 const options = {
 	method: 'GET',
 	headers: {
@@ -34,14 +35,15 @@ const options = {
 		'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
 	}
 };
-
+let dataArray;
 async function test() {
     try {
         const response = await fetch(url, options);
         const result = await response.json();
+        dataArray = result
         // console.log(result.prices.reduce((obj,item) => Object.assign(obj, {[item.item_name] : item}), {} ));
-        const data = (result.prices.reduce((obj,item) => Object.assign(obj, {[item.item_name] : item}), {} ))
-        console.log(data["Meal in Inexpensive Restaurant"].usd.avg)
+        // const data = (result.prices.reduce((obj,item) => Object.assign(obj, {[item.item_name] : item}), {} ))
+        console.log(dataArray)
         // console.log(result.prices)
     } catch (error) {
         console.error(error);
@@ -53,23 +55,34 @@ new svgMap({
     targetElementID: 'svgMap',
     data: {
       data: {
-        gdp: {
-          name: 'GDP per capita',
+        // gdp: {
+          // name: 'GDP per capita',
+          // format: '{0} USD',
+          // thousandSeparator: ',',
+          // thresholdMax: 50000,
+          // thresholdMin: 1000
+        // },
+        mangos: {
+          name: "mango",
           format: '{0} USD',
-          thousandSeparator: ',',
-          thresholdMax: 50000,
-          thresholdMin: 1000
+    
         },
-        change: {
-          name: 'Change to year before',
-          format: '{0} %'
-        }
+
+        water: {
+          name: "water",
+          format: '{0} USD',
+        },
+        // change: {
+        //   name: 'Change to year before',
+        //   format: '{0} %'
+        // }
       },
-      applyData: 'gdp',
+      applyData: 'mangos',
       values: {
-        AF: {gdp: 587, change: 4.73},
-        AL: {gdp: 4583, change: 11.09},
-        DZ: {gdp: 4293, change: 10.01}
+        IT: { change: 4.73},
+        AL: { change: 11.09},
+        DZ: { change: 10.01},
+        "United States": { change: 33, mangos: 23, water: 44}
         // ...
       }
     }
