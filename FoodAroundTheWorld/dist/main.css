@@ -289,14 +289,26 @@
   color: 0;
 }
 
+.wrapper {
+  width: 240px;
+  padding: 12px;
+}
+.wrapper h1 {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
 .row {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 .row label {
-  color: #ccc;
+  color: purple;
+  flex-grow: 1;
 }
 .row span {
-  color: #444;
+  color: green;
 }

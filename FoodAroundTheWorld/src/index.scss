@@ -96,16 +96,30 @@
     color: red($color: #000000);
 }
 
+.wrapper {
+    width: 240px;
+    padding: 12px;
+
+    h1 {
+        font-size: 18px;
+        margin: 0 0 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .row {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    
     label {
-        color: #ccc;
+        color: purple;
+        // color: #ccc;
+        flex-grow: 1;
     }
 
     span {
-        color: #444;
+        color: green;
     }
 }
