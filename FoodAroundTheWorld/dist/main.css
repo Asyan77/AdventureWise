@@ -288,3 +288,15 @@
 #test {
   color: 0;
 }
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.row label {
+  color: #ccc;
+}
+.row span {
+  color: #444;
+}

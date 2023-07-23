@@ -95,3 +95,17 @@
 #test {
     color: red($color: #000000);
 }
+
+.row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    label {
+        color: #ccc;
+    }
+
+    span {
+        color: #444;
+    }
+}
