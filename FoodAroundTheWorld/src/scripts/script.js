@@ -1,5 +1,5 @@
 
-const buttons = document.getElementsByClassName(".categorey")
+// const buttons = document.getElementsByClassName(".categorey")
 
 
 

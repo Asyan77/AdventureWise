@@ -230,7 +230,7 @@ export default {
     UA: 'Mykolaiv',
     AE: 'Abu Dhabi',
     GB: 'London',
-    US: 'United States',
+    US: 'San Francisco',
     UM: 'United States Minor Outlying Islands', // no edit
     VI: 'Frederiksted', 
     UY: 'Montevideo',

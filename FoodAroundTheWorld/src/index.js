@@ -31,10 +31,28 @@ const cappuccino = "Cappuccino"
 const dozenEggs = "Eggs, 12 pack"
 const tomatoesKilo = "Tomato, 1 kg"
 
+function getCountryNameByCode(countryCode) {
+    console.log('CountryCode', countryCode)
+    if (countryCode in countryCodes) {
+      return countryCodes[countryCode];
+    } else {
+      return 'Country code not found';
+    }
+  }
+
+  function getCityNameByCode(countryCode) {
+    console.log('CountryCode', countryCode)
+    if (countryCode in cityNamesList) {
+      return cityNamesList[countryCode];
+    } else {
+      return 'CityName not found';
+    }
+    
+  }
+
 
 async function getCityCostData(countryName, cityName) {
   const url = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`;
-  // const url = 'https://cost-of-living-and-prices.p.rapidapi.com/cities';
   const options = {
     method: 'GET',
     headers: {
@@ -54,8 +72,6 @@ async function getCityCostData(countryName, cityName) {
              result = await response.json();
 
         }
- 
-
 
         const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal for 2 people');
         const inexpensiveMealInfo = getItemAvgUSDPriceByName(inexpensiveMealPrice, result, 'Inexpensive Meal')
@@ -89,14 +105,6 @@ async function getCityCostData(countryName, cityName) {
 
         return parentDiv;
 
-        // dataArray = result
-        // // console.log(result.prices.reduce((obj,item) => Object.assign(obj, {[item.item_name] : item}), {} ));
-        // // const data = (result.prices.reduce((obj,item) => Object.assign(obj, {[item.item_name] : item}), {} ))
-        // console.log(dataArray)
-        // const costInfoObject = {}
-        // costInfoObject[mealForTwo]= mealForTwoInfo
-        // costInfoObject[inexpensiveMealPrice] = inexpensiveMealInfo
-        // // console.log(result.prices)
     } catch (error) {
         console.error(error);
     }
@@ -132,30 +140,36 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
 
 const countryInformation = new Map();
 
-
-
   new svgMap({
     targetElementID: 'svgMap',
     // If async/await was supported:
-    async onGetTooltip2(toolTipdiv, countryId, countryValues) {
-        const cityName = getCityNameByCode(countryId);
-        const countryName = getCountryNameByCode(countryId);
-        return await getCityCostData(countryName, cityName);
-    },
+    // async onGetTooltip(toolTipdiv, countryId, countryValues) {
+    //     const cityName = getCityNameByCode(countryId);
+    //     const countryName = getCountryNameByCode(countryId);
+    //     const data = await getCityCostData(countryName, cityName);
+    //     console.log('data', data)
+    //     return countryInformation.get(countryId)
+       
+    // },
+
     // Since async/await is not supported with this npm library
     onGetTooltip(toolTipdiv, countryId, countryValues) {
       const cityName = getCityNameByCode(countryId);
       const countryName = getCountryNameByCode(countryId);
 
       if (countryInformation.has(countryId)) { // checking if we've loaded the data 
-        return countryInformation.get(countryId); // get the country info by country id
+        // console.log(countryInformation.get(countryId), 'countryInfo')
+        return countryInformation.get(countryId); 
       } else {
-        getCityCostData(countryName, cityName).then((div) => { // this line is loading the country data (Promise.then)
-            countryInformation.set(countryId, div); // this line is setting the data 
-          });
-          return `Loading data for ${cityName}, ${countryName}`;
-      }
-    },
+        let country;
+        getCityCostData(countryName, cityName).then((div) => { 
+            countryInformation.set(countryId, div) 
+        }).then(result => result.get(countryId))
+            // country = countryInformation.get(countryId)
+            console.log('country', country) 
+        }
+
+        },
     data: {
       data: {
         // gdp: {
@@ -209,16 +223,10 @@ const countryInformation = new Map();
     }
   });
   
-    // Client-side JavaScript
+   
     function handleMapClick(event) {
-      // Get the target element that was clicked
       const clickedElement = event.target;
-    
-      // Now, you can extract information from the clicked element
-      // For example, if the elements have data attributes or specific classes, you can access them like this:
-      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one class
-    
-      // Use the information as you need, for example, log it to the console
+      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one clas
       const countryName = getCountryNameByCode(elementCountryID)  
       const cityName = getCityNameByCode(elementCountryID)
 
@@ -233,27 +241,5 @@ const countryInformation = new Map();
 
 
 
-    function getCountryNameByCode(countryCode) {
-      console.log('CountryCode', countryCode)
-      // Check if the provided country code exists in the 'countryCodes' object
-      if (countryCode in countryCodes) {
-        // If the country code is found, return the corresponding country name
-        return countryCodes[countryCode];
-      } else {
-        // If the country code is not found, return a message indicating it's not available
-        return 'Country code not found';
-      }
-    }
-
-    function getCityNameByCode(countryCode) {
-      console.log('CountryCode', countryCode)
-      // Check if the provided country code exists in the 'countryCodes' object
-      if (countryCode in cityNamesList) {
-        // If the country code is found, return the corresponding country name
-        return cityNamesList[countryCode];
-      } else {
-        // If the country code is not found, return a message indicating it's not available
-        return 'CityName not found';
-      }
-    }
+  
   
