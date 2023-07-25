@@ -19,14 +19,10 @@ const svgMapInstance = document.getElementById('svgMap')
 
  function handleMapClick(event) {
       const clickedElement = event.target;
-      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one clas
+      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one class
       const countryName = getCountryNameByCode(elementCountryID)  
       const cityName = getCityNameByCode(elementCountryID)
-
-      console.log('Country Name', countryName) 
-      return getCityCostData(countryName, cityName)
-      // function to call the cost averages API 
-      // 
+      return getCityCostData(countryName, cityName) // function to call the cost averages API 
     }
    
 
@@ -46,7 +42,6 @@ function getCountryNameByCode(countryCode) {
     } else {
       return 'CityName not found';
     }
-    
   }
 
 
@@ -70,7 +65,7 @@ async function getCityCostData(countryName, cityName) {
              result = await response.json();
         }
 
-        const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal for 2');
+        const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal (2ppl)');
         const inexpensiveMealInfo = getItemAvgUSDPriceByName(inexpensiveMealPrice, result, 'Inexpensive Meal')
         const cappuccinoInfo = getItemAvgUSDPriceByName(cappuccino, result, 'Cappuccino')
         const dozenEggsInfo = getItemAvgUSDPriceByName(dozenEggs, result, 'Dozen Eggs')
@@ -137,15 +132,6 @@ const countryInformation = new Map();
 
   new svgMap({
     targetElementID: 'svgMap',
-    // If async/await was supported:
-    // async onGetTooltip(toolTipdiv, countryId, countryValues) {
-    //     const cityName = getCityNameByCode(countryId);
-    //     const countryName = getCountryNameByCode(countryId);
-    //     const data = await getCityCostData(countryName, cityName);
-    //     return countryInformation.get(countryId)
-    // },
-
-    // Since async/await is not supported with this npm library
     onGetTooltip(toolTipdiv, countryId, countryValues) {
       const cityName = getCityNameByCode(countryId);
       const countryName = getCountryNameByCode(countryId);
@@ -155,22 +141,46 @@ const countryInformation = new Map();
         // return countryInformation.get(countryId); 
     //   }
     //   } else {
-    //     let country;
-        getCityCostData(countryName, cityName).then((div) => { 
-            return countryInformation.set(countryId, div) 
-        }).then(result => result.get(countryId)).then((div) => {
-            const body = document.querySelector("#body");
-            if (body.children.length >= 5) {
-                const oldChild = body.children[0];
-                body.replaceChild(div, oldChild);
-            } else {
-                body.appendChild(div);
-            }
-            // console.log('WHAT THE FREAKING FUCKKKK')
+    let currentIndex = 0 
 
+    function rotateChildrenInOrder(body, div) {
+        const totalChildren = body.children.length;
+        if (totalChildren >= 5) {
+            const oldChild = body.children[currentIndex];
+            body.replaceChild(div, oldChild);
+          } else {
+            body.appendChild(div);
+          }
+          currentIndex = (currentIndex + 1);
+        }
+
+    getCityCostData(countryName, cityName)
+        .then((div) => { 
+            return countryInformation.set(countryId, div) 
         })
-            // country = countryInformation.get(countryId)
-            console.log('country', country) 
+        .then(result => result.get(countryId))
+        .then((div) => {
+            const body = document.querySelector("#body");
+            rotateChildrenInOrder(body, div)
+    })
+
+
+
+        // getCityCostData(countryName, cityName)
+        //     .then((div) => { 
+        //         return countryInformation.set(countryId, div) 
+        //      })
+        //     .then(result => result.get(countryId))
+        //     .then((div) => {
+        //         const body = document.querySelector("#body");
+
+        //     if (body.children.length >= 5) {
+        //         const oldChild = body.children[0];
+        //         body.replaceChild(div, oldChild);
+        //     } else {
+        //         body.appendChild(div);
+        //     }
+        // })
 
         },
     data: {
