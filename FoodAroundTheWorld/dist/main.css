@@ -42,8 +42,8 @@
 
 .svgMap-map-wrapper {
   position: relative;
-  width: 100%;
-  padding-top: 50%;
+  width: 80%;
+  padding-top: 33%;
   overflow: hidden;
   background: #d9ecff;
   color: #111;
@@ -294,13 +294,16 @@
 
 #title {
   color: 0;
-  background-color: pink;
+  background-color: rgb(154, 180, 60);
   width: 800px;
-  height: 200px;
-  justify-content: space-between;
+  height: 100px;
+  font-family: cursive;
+  font-size: 80px;
+  justify-content: flex-end;
 }
 
 #links {
+  height: 50px;
   width: 200px;
   background-color: aquamarine;
   display: flex;
@@ -313,7 +316,7 @@
   padding: 12px;
 }
 .wrapper h1 {
-  font-size: 18px;
+  font-size: 22px;
   margin: 0 0 20px 0;
   display: flex;
   justify-content: center;
@@ -334,4 +337,6 @@
 
 #body {
   display: flex;
+  justify-content: space-around;
+  background-color: lavender;
 }

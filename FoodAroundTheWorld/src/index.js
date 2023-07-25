@@ -149,11 +149,11 @@ const countryInformation = new Map();
     onGetTooltip(toolTipdiv, countryId, countryValues) {
       const cityName = getCityNameByCode(countryId);
       const countryName = getCountryNameByCode(countryId);
-      if (countryId) { // checking if we've loaded the data 
+    //   if (countryInformation.has(countryId)) { // checking if we've loaded the data 
         // console.log(countryInformation.get(countryId), 'countryInfo')
         // return (`${cityName}, ${countryName}`);
-        return countryInformation.get(countryId); 
-      }
+        // return countryInformation.get(countryId); 
+    //   }
     //   } else {
     //     let country;
         getCityCostData(countryName, cityName).then((div) => { 

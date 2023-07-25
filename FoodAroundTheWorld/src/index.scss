@@ -8,13 +8,16 @@
 
 #title {
     color: red($color: #000000);
-    background-color: pink;
+    background-color: rgb(154, 180, 60);
     width: 800px;
-    height: 200px;
-    justify-content: space-between;
+    height: 100px;
+    font-family: cursive;
+    font-size: 80px;
+    justify-content: flex-end;
 }
 
 #links {
+    height: 50px;
     width: 200px;
     background-color: aquamarine;
     display: flex;
@@ -28,7 +31,7 @@
     padding: 12px;
 
     h1 {
-        font-size: 18px;
+        font-size: 22px;
         margin: 0 0 20px 0;
         display: flex;
         justify-content: center;
@@ -53,4 +56,6 @@
 
 #body {
     display: flex;
+    justify-content: space-around;
+    background-color: lavender;
 }

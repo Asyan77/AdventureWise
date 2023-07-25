@@ -1,6 +1,8 @@
 .svgMap-wrapper,
 .svgMap-container {
   position: relative;
+  // display: flex;
+  // justify-content: center;
 }
 
 .svgMap-block-zoom-notice {
@@ -40,8 +42,8 @@
 
 .svgMap-map-wrapper {
   position: relative;
-  width: 100%;
-  padding-top: 50%;
+  width: 80%;
+  padding-top: 33%;
   overflow: hidden;
   background: $oceanColor;
   color: $textColor;
@@ -54,7 +56,7 @@
     outline: 0;
   }
 
-  .svgMap-map-image {
+  .svgMap-map-image { // map itself
     display: block;
     position: absolute;
     top: 0;
