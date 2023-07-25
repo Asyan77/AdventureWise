@@ -170,6 +170,8 @@
   .svgMap-map-wrapper .svgMap-country:hover {
     stroke: #333;
     stroke-width: 1.5;
+    fill: rgb(113, 176, 50);
+    stroke: rgb(234, 255, 0);
   }
 }
 .svgMap-map-wrapper .svgMap-country.svgMap-active {
@@ -311,4 +313,8 @@
 }
 .row span {
   color: green;
+}
+
+#body {
+  display: flex;
 }

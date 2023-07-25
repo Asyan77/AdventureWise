@@ -2,34 +2,33 @@ import svgMap from 'svgmap';
 import countryCodes from './countriesList.js';
 import cityNamesList from './cityNamesList.js';
 import { fakeData } from './fakeData.js';
+
+
 // import "index.scss";
 // import 'svgmap/dist/svgMap.min.css';
-
-// const url = 'https://cost-of-living-and-prices.p.rapidapi.com/cities';
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': 'e377e81e46mshc55f3ddf23c5d2dp1a6d0cjsn8fe11bcbb1f8',
-// 		'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
-// 	}
-// };
-
-// async function test() {
-//     try {
-//         const response = await fetch(url, options);
-//         const result = await response.text();
-//         console.log(result);
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-// test()
 
 const mealForTwo = "Meal for 2 People, Mid-range Restaurant, Three-course"
 const inexpensiveMealPrice = "Meal in Inexpensive Restaurant"
 const cappuccino = "Cappuccino"
 const dozenEggs = "Eggs, 12 pack"
 const tomatoesKilo = "Tomato, 1 kg"
+
+const svgMapInstance = document.getElementById('svgMap')
+// svgMapInstance.addEventListener('click', handleMapClick);
+// svgMapInstance.addEventListener('hover', handleMapClick);
+
+ function handleMapClick(event) {
+      const clickedElement = event.target;
+      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one clas
+      const countryName = getCountryNameByCode(elementCountryID)  
+      const cityName = getCityNameByCode(elementCountryID)
+
+      console.log('Country Name', countryName) 
+      return getCityCostData(countryName, cityName)
+      // function to call the cost averages API 
+      // 
+    }
+   
 
 function getCountryNameByCode(countryCode) {
     console.log('CountryCode', countryCode)
@@ -66,11 +65,9 @@ async function getCityCostData(countryName, cityName) {
 
         if (useFakeResponse) {
             result = await Promise.resolve(fakeData)
-            
         } else {
             const response = await fetch(url, options);
              result = await response.json();
-
         }
 
         const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal for 2 people');
@@ -125,14 +122,12 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
 
         divEl.appendChild(labelEl);
         divEl.appendChild(spanEl);
-
         `
         <div class="row">
             <label>{label}</label>
             <span>$1.23</span>
         </div>
         `
-
         return divEl;
   }
   return 'Not Found';
@@ -149,7 +144,6 @@ const countryInformation = new Map();
     //     const data = await getCityCostData(countryName, cityName);
     //     console.log('data', data)
     //     return countryInformation.get(countryId)
-       
     // },
 
     // Since async/await is not supported with this npm library
@@ -157,52 +151,34 @@ const countryInformation = new Map();
       const cityName = getCityNameByCode(countryId);
       const countryName = getCountryNameByCode(countryId);
 
-      if (countryInformation.has(countryId)) { // checking if we've loaded the data 
-        // console.log(countryInformation.get(countryId), 'countryInfo')
-        return countryInformation.get(countryId); 
-      } else {
-        let country;
+    //   if (countryInformation.has(countryId)) { // checking if we've loaded the data 
+    //     // console.log(countryInformation.get(countryId), 'countryInfo')
+    //     return countryInformation.get(countryId); 
+    //   } else {
+    //     let country;
         getCityCostData(countryName, cityName).then((div) => { 
-            countryInformation.set(countryId, div) 
-        }).then(result => result.get(countryId))
+            return countryInformation.set(countryId, div) 
+        }).then(result => result.get(countryId)).then((div) => {
+            const body = document.querySelector("#body");
+            if (body.children.length >= 5) {
+                const oldChild = body.children[0];
+                body.replaceChild(div, oldChild);
+            } else {
+                body.appendChild(div);
+            }
+            // console.log('WHAT THE FREAKING FUCKKKK')
+
+        })
             // country = countryInformation.get(countryId)
             console.log('country', country) 
-        }
 
         },
     data: {
       data: {
-        // gdp: {
-          // name: 'GDP per capita',
-          // format: '{0} USD',
-          // thousandSeparator: ',',
-          // thresholdMax: 50000,
-          // thresholdMin: 1000
-        // },
         threeCourse: {
           name: "3-Course Meal for Two",
           format: '{0} USD',
     
-        },
-
-        inexpensiveMeal: {
-          name: "Inexpensive Meal",
-          format: '{0} USD',
-        },
-
-        cappuccinoCup: {
-          name: "Cappuccino",
-          format: '{0} USD',
-        },
-
-        eggs: {
-          name: "Dozen Eggs",
-          format: '{0} USD',
-        },
-
-        tomatoes: {
-          name: "Tomatoes, 1kg",
-          format: '{0} USD',
         },
       },
       //call a function getCityCostData, loop over the country codes 
@@ -224,20 +200,6 @@ const countryInformation = new Map();
   });
   
    
-    function handleMapClick(event) {
-      const clickedElement = event.target;
-      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one clas
-      const countryName = getCountryNameByCode(elementCountryID)  
-      const cityName = getCityNameByCode(elementCountryID)
-
-      console.log('Country Name', countryName) 
-      return getCityCostData(countryName, cityName)
-      // function to call the cost averages API 
-      // 
-    }
-    const svgMapInstance = document.getElementById('svgMap')
-    // svgMapInstance.addEventListener('click', handleMapClick);
-    // svgMapInstance.addEventListener('hover', handleMapClick);
 
 
 

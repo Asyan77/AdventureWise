@@ -6,8 +6,6 @@ export default {
     AS: 'American Samoa', //not edited
     AD: 'Andorra la Vella',
     AO: 'Luanda',
-    AI: 'Anguilla',// not edited
-    AQ: 'Antarctica', // not edit
     AG: "St John's",
     AR: 'Buenos Aires',
     AM: 'Yerevan',
