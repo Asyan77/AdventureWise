@@ -2,8 +2,6 @@ import svgMap from 'svgmap';
 import countryCodes from './countriesList.js';
 import cityNamesList from './cityNamesList.js';
 import { fakeData } from './fakeData.js';
-
-
 // import "index.scss";
 // import 'svgmap/dist/svgMap.min.css';
 
@@ -141,18 +139,43 @@ const countryInformation = new Map();
         // return countryInformation.get(countryId); 
     //   }
     //   } else {
-    let currentIndex = 0 
+
+        //     #get the new country's info
+        // #replace index 4's data to be index 3's
+        // #replace index 3's data to be index 2's
+        // #replace index 2's data to be index 1's
+        // #replace index 1's data to be index 0's
+        // #set index 0 as the new country's info
+
+        // function rotateChildrenInOrder(body, div) {
+        //     const totalChildren = body.children.length;
+        //     if (totalChildren >= 5) { 
+        //         console.log(body.childern, 'body.children')
+        //         //TODO: make the previous 4 lines a loop
+        //         // body.replaceChild(div, body.children[0]);
+        //         //prev code: body.replaceChild(div, oldChild);
+        //     } else {
+        //         body.appendChild(div);
+        //         console.log(body.children)
+        //     }
+        //   }
+
 
     function rotateChildrenInOrder(body, div) {
         const totalChildren = body.children.length;
-        if (totalChildren >= 5) {
-            const oldChild = body.children[currentIndex];
-            body.replaceChild(div, oldChild);
-          } else {
-            body.appendChild(div);
-          }
-          currentIndex = (currentIndex + 1);
-        }
+            if (totalChildren >= 5) {
+                body.replaceChild(body.children[4], body.children[3]);
+                body.replaceChild(body.children[3], body.children[2]);
+                body.replaceChild(body.children[2], body.children[1]);
+                body.replaceChild(body.children[1], body.children[0]);
+                body.appendChild(div)
+            } else {
+                body.appendChild(div);
+                console.log('body=', body)
+                console.log('body.children=', body.children)
+                console.log(div)
+            }
+     }
 
     getCityCostData(countryName, cityName)
         .then((div) => { 
@@ -199,7 +222,7 @@ const countryInformation = new Map();
       // 
       applyData: 'threeCourse',
       values: {
-   
+        
       }
     }
   });
