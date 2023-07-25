@@ -1,6 +1,26 @@
 @import "./styles/main.scss";
-#test {
+
+
+#header {
+    display: flex;
+    justify-content: space-around;
+}
+
+#title {
     color: red($color: #000000);
+    background-color: pink;
+    width: 800px;
+    height: 200px;
+    justify-content: space-between;
+}
+
+#links {
+    width: 200px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .wrapper {

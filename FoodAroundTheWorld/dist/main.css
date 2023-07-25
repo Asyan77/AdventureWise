@@ -287,8 +287,25 @@
   transform: translateX(-50%) scaleY(-1);
 }
 
-#test {
+#header {
+  display: flex;
+  justify-content: space-around;
+}
+
+#title {
   color: 0;
+  background-color: pink;
+  width: 800px;
+  height: 200px;
+  justify-content: space-between;
+}
+
+#links {
+  width: 200px;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .wrapper {

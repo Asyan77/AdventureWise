@@ -70,7 +70,7 @@ async function getCityCostData(countryName, cityName) {
              result = await response.json();
         }
 
-        const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal for 2 people');
+        const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal for 2');
         const inexpensiveMealInfo = getItemAvgUSDPriceByName(inexpensiveMealPrice, result, 'Inexpensive Meal')
         const cappuccinoInfo = getItemAvgUSDPriceByName(cappuccino, result, 'Cappuccino')
         const dozenEggsInfo = getItemAvgUSDPriceByName(dozenEggs, result, 'Dozen Eggs')
@@ -83,11 +83,11 @@ async function getCityCostData(countryName, cityName) {
         h1.innerHTML = `${cityName}, ${countryName}`;
 
         parentDiv.appendChild(h1);
-        parentDiv.appendChild(mealForTwoInfo);
-        parentDiv.appendChild(inexpensiveMealInfo);
         parentDiv.appendChild(cappuccinoInfo);
         parentDiv.appendChild(dozenEggsInfo);
         parentDiv.appendChild(tomatoesKiloInfo);
+        parentDiv.appendChild(inexpensiveMealInfo);
+        parentDiv.appendChild(mealForTwoInfo);
 
         `
         <div class="wrapper">
@@ -142,7 +142,6 @@ const countryInformation = new Map();
     //     const cityName = getCityNameByCode(countryId);
     //     const countryName = getCountryNameByCode(countryId);
     //     const data = await getCityCostData(countryName, cityName);
-    //     console.log('data', data)
     //     return countryInformation.get(countryId)
     // },
 
@@ -150,10 +149,11 @@ const countryInformation = new Map();
     onGetTooltip(toolTipdiv, countryId, countryValues) {
       const cityName = getCityNameByCode(countryId);
       const countryName = getCountryNameByCode(countryId);
-
-    //   if (countryInformation.has(countryId)) { // checking if we've loaded the data 
-    //     // console.log(countryInformation.get(countryId), 'countryInfo')
-    //     return countryInformation.get(countryId); 
+      if (countryId) { // checking if we've loaded the data 
+        // console.log(countryInformation.get(countryId), 'countryInfo')
+        // return (`${cityName}, ${countryName}`);
+        return countryInformation.get(countryId); 
+      }
     //   } else {
     //     let country;
         getCityCostData(countryName, cityName).then((div) => { 
@@ -178,7 +178,6 @@ const countryInformation = new Map();
         threeCourse: {
           name: "3-Course Meal for Two",
           format: '{0} USD',
-    
         },
       },
       //call a function getCityCostData, loop over the country codes 
@@ -190,11 +189,7 @@ const countryInformation = new Map();
       // 
       applyData: 'threeCourse',
       values: {
-        IT: { change: 4.73},
-        AL: { change: 11.09},
-        DZ: { change: 10.01},
-        US: {threeCourse: 23, inexpensiveMeal: 44}
-        // ...
+   
       }
     }
   });
