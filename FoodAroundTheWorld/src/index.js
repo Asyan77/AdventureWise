@@ -11,17 +11,28 @@ const cappuccino = "Cappuccino"
 const dozenEggs = "Eggs, 12 pack"
 const tomatoesKilo = "Tomato, 1 kg"
 
+function showPopup() {
+  const popup = document.getElementById("popup");
+  popup.style.display = "block";
+}
+
+function closePopup() {
+  const popup = document.getElementById("popup");
+  popup.style.display = "none";
+}
+// window.onload = showPopup;
+
 const svgMapInstance = document.getElementById('svgMap')
 // svgMapInstance.addEventListener('click', handleMapClick);
 // svgMapInstance.addEventListener('hover', handleMapClick);
 
- function handleMapClick(event) {
-      const clickedElement = event.target;
-      const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one class
-      const countryName = getCountryNameByCode(elementCountryID)  
-      const cityName = getCityNameByCode(elementCountryID)
-      return getCityCostData(countryName, cityName) // function to call the cost averages API 
-    }
+//  function handleMapClick(event) {
+//       const clickedElement = event.target;
+//       const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one class
+//       const countryName = getCountryNameByCode(elementCountryID)  
+//       const cityName = getCityNameByCode(elementCountryID)
+//       return getCityCostData(countryName, cityName) // function to call the cost averages API 
+//     }
    
 
 function getCountryNameByCode(countryCode) {
@@ -42,9 +53,15 @@ function getCountryNameByCode(countryCode) {
     }
   }
 
+let domain = 'https://food-around-the-world-proxy-server.onrender.com'
+
+if (process.env.NODE_ENV !== 'production') {
+  domain = 'http://localhost:5001'
+}
 
 async function getCityCostData(countryName, cityName) {
-  const url = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`;
+  // const url = `${domain}?url=https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`;
+  const url = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`
   const options = {
     method: 'GET',
     headers: {
@@ -60,7 +77,12 @@ async function getCityCostData(countryName, cityName) {
             result = await Promise.resolve(fakeData)
         } else {
             const response = await fetch(url, options);
+            if (response.ok) {
              result = await response.json();
+             console.log(result)
+            } else {
+              console.log(response)
+            }
         }
 
         const mealForTwoInfo = getItemAvgUSDPriceByName(mealForTwo, result, '3-Course Meal (2ppl)');
@@ -141,16 +163,15 @@ const countryInformation = new Map();
     //   } else {
 
         //         //TODO: make the previous 4 lines a loop
-        //         // body.replaceChild(div, body.children[0]);
-        //         //prev code: body.replaceChild(div, oldChild);
+
     function rotateChildrenInOrder(body, div) {
         const totalChildren = body.children.length;
-            if (totalChildren >= 5) {
-                body.replaceChild(body.children[4], body.children[3]);
-                body.replaceChild(body.children[3], body.children[2]);
-                body.replaceChild(body.children[2], body.children[1]);
-                body.replaceChild(body.children[1], body.children[0]);
-                body.appendChild(div)
+            if (totalChildren === 5) {
+              body.replaceChild(body.children[1], body.children[0]);
+              body.replaceChild(body.children[2], body.children[1]);
+              body.replaceChild(body.children[3], body.children[2]);
+              body.replaceChild(body.children[4], body.children[3]);
+              body.appendChild(div)
             } else {
                 body.appendChild(div);
                 console.log('body=', body)

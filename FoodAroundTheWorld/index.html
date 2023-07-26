@@ -16,6 +16,8 @@
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ef485968be.js" crossorigin="anonymous"></script>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./dist/main.js" defer></script>
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
@@ -32,26 +34,37 @@
             <h1 id="title">Food Around the World</h1>
         </div>
 
-        <ul id="links">
-            <li><a href="www.linkedin.com/in/ashley-yan" class="linkedIn" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/Asyan77" class="gitHub">GitHub</a></li>
-            <li><a href="">Contact</a></li>
-          </ul>
+        <div class="links-and-hearts">
+            <ul id="links">
+                <!-- <li>
+                    <a href="www.linkedin.com/in/ashley-yan" class="linkedIn" target="_blank">LinkedIn</a>
+                </li> -->
+                <i class="fa-brands fa-linkedin fa-2xl" style="color: #2363d1;"></i>
+                <!-- <li><a href="https://github.com/Asyan77" class="gitHub">GitHub</a></li> -->
+                <i class="fa-brands fa-github fa-2xl" style="color: #5f32b3;"></i>
+            </ul>
 
+            <!-- <i class="fa-sharp fa-light fa-pot-food fa-beat-fade fa-2xl" style="color: #ece632;"></i> -->
+
+            <div class="fa-3x">
+                <i class="fa-solid fa-heart fa-beat"></i>
+                <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s;" ></i>
+                <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 2s;"></i>
+                <i class="fa-solid fa-heart fa-beat" style="--fa-beat-scale: 2.0;"></i>
+            </div>
+
+        </div>   
+
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>POP POP POP!</p>
+        </div>
     </div>
     
     <div id="svgMap"></div>
-
-    <!-- // twitter button -->
-    <div class="trapdoor">
-        <div class="top door">
-        </div>
-        <div class="bottom door">
-        </div>
-        <a href="https://twitter.com/twholman" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="false">Follow @twholman</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </div>
-      
 
      
 

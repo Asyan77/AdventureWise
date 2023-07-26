@@ -3,7 +3,7 @@
 body {
     border: #050505 solid;
     // background-color: $oceanColor;
-    background-color: #000000;
+    background-color: #151313;
 
 }
 
@@ -40,10 +40,10 @@ body {
 
 #links {
     height: 50px;
-    width: 200px;
-    background-color: aquamarine;
+    width: 100px;
+    // background-color: aquamarine;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
