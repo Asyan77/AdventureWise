@@ -140,27 +140,9 @@ const countryInformation = new Map();
     //   }
     //   } else {
 
-        //     #get the new country's info
-        // #replace index 4's data to be index 3's
-        // #replace index 3's data to be index 2's
-        // #replace index 2's data to be index 1's
-        // #replace index 1's data to be index 0's
-        // #set index 0 as the new country's info
-
-        // function rotateChildrenInOrder(body, div) {
-        //     const totalChildren = body.children.length;
-        //     if (totalChildren >= 5) { 
-        //         console.log(body.childern, 'body.children')
         //         //TODO: make the previous 4 lines a loop
         //         // body.replaceChild(div, body.children[0]);
         //         //prev code: body.replaceChild(div, oldChild);
-        //     } else {
-        //         body.appendChild(div);
-        //         console.log(body.children)
-        //     }
-        //   }
-
-
     function rotateChildrenInOrder(body, div) {
         const totalChildren = body.children.length;
             if (totalChildren >= 5) {

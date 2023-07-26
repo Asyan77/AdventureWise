@@ -26,7 +26,7 @@
 }
 .svgMap-block-zoom-notice > div {
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 0;
   right: 0;
   text-align: center;
@@ -43,6 +43,7 @@
 .svgMap-map-wrapper {
   position: relative;
   width: 80%;
+  margin-left: 10%;
   padding-top: 33%;
   overflow: hidden;
   background: #8ab5e1;
@@ -154,7 +155,7 @@
   z-index: 1;
   display: flex;
   border-radius: 2px;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 2px rgba(30, 29, 29, 0.1);
 }
 .svgMap-map-wrapper .svgMap-country {
   stroke: #fff;
@@ -184,9 +185,12 @@
   position: absolute;
   z-index: 2;
   border-radius: 2px;
-  background: rgb(140, 185, 136);
+  background: lavenderblush;
   transform: translate(-50%, -100%);
-  border-bottom: 1px solid #000;
+  font-family: "Gruppo", sans-serif;
+  font-size: 25px;
+  border: lime solid 3px;
+  border-radius: 15px;
   display: none;
   pointer-events: none;
   min-width: 60px;
@@ -223,7 +227,7 @@
 }
 .svgMap-tooltip .svgMap-tooltip-title {
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 30px;
   line-height: 28px;
   padding: 0 0 8px;
   text-align: center;
@@ -260,6 +264,7 @@
   padding: 2px 0;
   color: #777;
   font-style: italic;
+  font-size: 1px;
 }
 .svgMap-tooltip .svgMap-tooltip-pointer {
   position: absolute;
@@ -287,19 +292,38 @@
   transform: translateX(-50%) scaleY(-1);
 }
 
+body {
+  border: #050505 solid;
+  background-color: #000000;
+}
+
 #header {
   display: flex;
   justify-content: space-around;
+  border: #000000 solid;
+  margin-left: 80px;
+  margin-right: 80px;
+  padding-bottom: 1px;
+  height: 200px;
+}
+
+#title-container {
+  display: flex;
+  justify-content: center;
+  border: #000000 solid;
 }
 
 #title {
   color: 0;
-  background-color: rgb(154, 180, 60);
-  width: 800px;
-  height: 100px;
-  font-family: cursive;
-  font-size: 80px;
-  justify-content: flex-end;
+  border: yellow;
+  width: 900px;
+  height: 500px;
+  font-family: "Dancing Script", cursive;
+  font-size: 100px;
+  justify-content: center;
+  align-items: center;
+  border: #000000 solid;
+  color: rgb(233, 164, 220);
 }
 
 #links {
@@ -311,32 +335,51 @@
   align-items: center;
 }
 
+li {
+  display: flex;
+  justify-content: space-between;
+  border: #000000 solid;
+}
+
 .wrapper {
-  width: 240px;
+  width: 300px;
   padding: 12px;
+  border: #000000 solid;
 }
 .wrapper h1 {
+  width: 300px;
   font-size: 22px;
+  font-family: "Montserrat", sans-serif;
   margin: 0 0 20px 0;
   display: flex;
   justify-content: center;
+  background-color: rgb(243, 239, 185);
+  border-bottom: 3px solid rgb(216, 16, 173);
+  border-radius: 15%;
 }
 
 .row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  font-size: 18px;
+  width: 300px;
+  height: 50px;
+  background-color: rgb(56, 29, 92);
 }
 .row label {
-  color: purple;
+  color: rgb(241, 236, 243);
+  font-family: "Montserrat", sans-serif;
   flex-grow: 1;
 }
 .row span {
-  color: green;
+  color: rgb(72, 205, 72);
+  font-family: "Victor Mono", monospace;
 }
 
 #body {
   display: flex;
   justify-content: space-around;
-  background-color: lavender;
+  margin-left: 60px;
+  margin-right: 60px;
 }

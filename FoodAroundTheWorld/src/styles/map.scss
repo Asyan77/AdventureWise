@@ -26,7 +26,7 @@
 
   > div {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 0;
     right: 0;
     text-align: center;
@@ -40,9 +40,10 @@
   }
 }
 
-.svgMap-map-wrapper {
+.svgMap-map-wrapper { // this is the box of the world map
   position: relative;
   width: 80%;
+  margin-left: 10%;
   padding-top: 33%;
   overflow: hidden;
   background: $oceanColor;
@@ -185,7 +186,7 @@
     z-index: 1;
     display: flex;
     border-radius: 2px;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 2px rgba(30, 29, 29, 0.1);
   }
 
   // Countries

@@ -3,9 +3,13 @@
     position: absolute;
     z-index: 2;
     border-radius: 2px;
-    background: rgb(140, 185, 136);
+    background: lavenderblush;
     transform: translate(-50%, -100%);
-    border-bottom: 1px solid #000;
+    // border-bottom: 1px solid #000;
+    font-family: 'Gruppo', sans-serif;
+    font-size: 25px;
+    border: lime solid 3px;
+    border-radius: 15px;
     display: none;
     pointer-events: none;
     min-width: 60px;
@@ -48,7 +52,7 @@
   
     .svgMap-tooltip-title {
       white-space: nowrap;
-      font-size: 18px;
+      font-size: 30px;
       line-height: 28px;
       padding: 0 0 8px;
       text-align: center;
@@ -91,6 +95,7 @@
         padding: 2px 0;
         color: $textColorLight;
         font-style: italic;
+        font-size: 1px;
       }
     }
   

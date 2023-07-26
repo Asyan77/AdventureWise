@@ -1,19 +1,41 @@
 @import "./styles/main.scss";
 
+body {
+    border: #050505 solid;
+    // background-color: $oceanColor;
+    background-color: #000000;
+
+}
+
 
 #header {
     display: flex;
     justify-content: space-around;
+    border: #000000 solid;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-bottom: 1px;
+    height: 200px;
 }
+
+#title-container {
+    display: flex;
+    justify-content: center;
+    border: #000000 solid;
+}
+
 
 #title {
     color: red($color: #000000);
-    background-color: rgb(154, 180, 60);
-    width: 800px;
-    height: 100px;
-    font-family: cursive;
-    font-size: 80px;
-    justify-content: flex-end;
+    border: yellow;
+    width: 900px;
+    height: 500px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 100px;
+    justify-content: center;
+    align-items: center;
+    border: #000000 solid;
+    color: rgb(233, 164, 220);
 }
 
 #links {
@@ -23,39 +45,66 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
 
+li {
+    display: flex;
+    justify-content: space-between;
+    border: #000000 solid;
 }
 
 .wrapper {
-    width: 240px;
+    width: 300px;
     padding: 12px;
+    border: #000000 solid;
 
     h1 {
+        width: 300px;
         font-size: 22px;
+        font-family: 'Montserrat', sans-serif;
         margin: 0 0 20px 0;
         display: flex;
         justify-content: center;
+        background-color: rgb(243, 239, 185);
+        border-bottom: 3px solid rgb(216, 16, 173);
+        border-radius: 15%;
     }
 }
 
 .row {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    font-size: 18px;
+    width: 300px;
+    height: 50px;
+    // background-color: rgb(29, 10, 91);
+    background-color: rgb(56, 29, 92);
+    // border-left: solid purple;
+    // border-right: solid purple;
     
     label {
-        color: purple;
-        // color: #ccc;
+        color: rgb(241, 236, 243);
+        font-family: 'Montserrat', sans-serif;
+        // font-weight: 700;
         flex-grow: 1;
     }
 
     span {
-        color: green;
+        color: rgb(72, 205, 72);
+        font-family: 'Victor Mono', monospace;
+        // font-weight: 400;
+
     }
 }
 
 #body {
     display: flex;
     justify-content: space-around;
-    background-color: lavender;
+    // border: #000000 solid;
+    margin-left: 60px;
+    margin-right: 60px;
 }
+
+
+
