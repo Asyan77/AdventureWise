@@ -12,15 +12,18 @@ const dozenEggs = "Eggs, 12 pack"
 const tomatoesKilo = "Tomato, 1 kg"
 
 function showPopup() {
-  const popup = document.getElementById("popup");
+  var popup = document.getElementById("popup");
   popup.style.display = "block";
 }
 
 function closePopup() {
-  const popup = document.getElementById("popup");
+  var popup = document.getElementById("popup");
   popup.style.display = "none";
 }
-// window.onload = showPopup;
+
+// window.onload = function() {
+//   showPopup();
+// }
 
 const svgMapInstance = document.getElementById('svgMap')
 // svgMapInstance.addEventListener('click', handleMapClick);
@@ -167,10 +170,10 @@ const countryInformation = new Map();
     function rotateChildrenInOrder(body, div) {
         const totalChildren = body.children.length;
             if (totalChildren === 5) {
-              body.replaceChild(body.children[1], body.children[0]);
-              body.replaceChild(body.children[2], body.children[1]);
-              body.replaceChild(body.children[3], body.children[2]);
               body.replaceChild(body.children[4], body.children[3]);
+              body.replaceChild(body.children[3], body.children[2]);
+              body.replaceChild(body.children[2], body.children[1]);
+              body.replaceChild(body.children[1], body.children[0]);
               body.appendChild(div)
             } else {
                 body.appendChild(div);
