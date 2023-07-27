@@ -10,32 +10,27 @@ const inexpensiveMealPrice = "Meal in Inexpensive Restaurant"
 const cappuccino = "Cappuccino"
 const dozenEggs = "Eggs, 12 pack"
 const tomatoesKilo = "Tomato, 1 kg"
+const popup = document.getElementById("popup");
 
 function showPopup() {
-  var popup = document.getElementById("popup");
   popup.style.display = "block";
 }
 
 function closePopup() {
-  var popup = document.getElementById("popup");
-  popup.style.display = "none";
+  popup.style.display = "none";``
 }
 
-// window.onload = function() {
-//   showPopup();
-// }
+window.onclick = function(event) {
+  if (event.target === popup) {
+      closePopup()
+      document.querySelector(".content").classList.remove("blur");
+  }
+}
+window.onload = function() {
+  showPopup();
+}
 
 const svgMapInstance = document.getElementById('svgMap')
-// svgMapInstance.addEventListener('click', handleMapClick);
-// svgMapInstance.addEventListener('hover', handleMapClick);
-
-//  function handleMapClick(event) {
-//       const clickedElement = event.target;
-//       const elementCountryID = clickedElement.attributes[2]['value']; // Assuming the element has only one class
-//       const countryName = getCountryNameByCode(elementCountryID)  
-//       const cityName = getCityNameByCode(elementCountryID)
-//       return getCityCostData(countryName, cityName) // function to call the cost averages API 
-//     }
    
 
 function getCountryNameByCode(countryCode) {
@@ -94,6 +89,7 @@ async function getCityCostData(countryName, cityName) {
         const dozenEggsInfo = getItemAvgUSDPriceByName(dozenEggs, result, 'Dozen Eggs')
         const tomatoesKiloInfo = getItemAvgUSDPriceByName(tomatoesKilo, result, 'tomatoes - 1kg');
 
+        //TO-DO Break this appending of items into its own function
         const parentDiv = document.createElement('div');
         parentDiv.classList.add('wrapper');
 
@@ -106,17 +102,6 @@ async function getCityCostData(countryName, cityName) {
         parentDiv.appendChild(tomatoesKiloInfo);
         parentDiv.appendChild(inexpensiveMealInfo);
         parentDiv.appendChild(mealForTwoInfo);
-
-        `
-        <div class="wrapper">
-            <h1></h1>
-            <div class="row">...</div>
-            <div class="row">...</div>
-            <div class="row">...</div>
-            <div class="row">...</div>
-            <div class="row">...</div>
-        </div>
-        `
 
         return parentDiv;
 
@@ -158,28 +143,33 @@ const countryInformation = new Map();
     onGetTooltip(toolTipdiv, countryId, countryValues) {
       const cityName = getCityNameByCode(countryId);
       const countryName = getCountryNameByCode(countryId);
-    //   if (countryInformation.has(countryId)) { // checking if we've loaded the data 
-        // console.log(countryInformation.get(countryId), 'countryInfo')
-        // return (`${cityName}, ${countryName}`);
-        // return countryInformation.get(countryId); 
-    //   }
-    //   } else {
-
-        //         //TODO: make the previous 4 lines a loop
 
     function rotateChildrenInOrder(body, div) {
         const totalChildren = body.children.length;
-            if (totalChildren === 5) {
-              body.replaceChild(body.children[4], body.children[3]);
-              body.replaceChild(body.children[3], body.children[2]);
-              body.replaceChild(body.children[2], body.children[1]);
-              body.replaceChild(body.children[1], body.children[0]);
-              body.appendChild(div)
-            } else {
+        // Convert HTMLCollection to Array
+        let arrayFromCollection = Array.from(body.children);
+
+        const hasNoDuplicateText = () => {
+          let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
+
+          // If the element doesn't exist, append it
+          if (!elementExists) {
+            return true
+          } else {
+            console.log("An element with the same text content already exists in the collection.");
+            return false
+          }
+        }
+        if (totalChildren >= 5) {
+              let firstElement = body.children[0];
+              firstElement.parentNode.removeChild(firstElement);
+              if (hasNoDuplicateText()) {
                 body.appendChild(div);
-                console.log('body=', body)
-                console.log('body.children=', body.children)
-                console.log(div)
+              }
+            } else {
+              if (hasNoDuplicateText()) {
+                body.appendChild(div);
+              }
             }
      }
 
@@ -193,24 +183,6 @@ const countryInformation = new Map();
             rotateChildrenInOrder(body, div)
     })
 
-
-
-        // getCityCostData(countryName, cityName)
-        //     .then((div) => { 
-        //         return countryInformation.set(countryId, div) 
-        //      })
-        //     .then(result => result.get(countryId))
-        //     .then((div) => {
-        //         const body = document.querySelector("#body");
-
-        //     if (body.children.length >= 5) {
-        //         const oldChild = body.children[0];
-        //         body.replaceChild(div, oldChild);
-        //     } else {
-        //         body.appendChild(div);
-        //     }
-        // })
-
         },
     data: {
       data: {
@@ -219,13 +191,6 @@ const countryInformation = new Map();
           format: '{0} USD',
         },
       },
-      //call a function getCityCostData, loop over the country codes 
-      // for countryCode in data countries
-      //     find city/country name for each country id
-      //     fetch cost data from getCityCostData function
-      //     apply that cost data values so that when you hover over the country that data is available
-      // RU: {inexpensiveMealPrice: value, mealForTwo: value }
-      // 
       applyData: 'threeCourse',
       values: {
         
