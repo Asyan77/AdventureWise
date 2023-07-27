@@ -1,43 +1,84 @@
-Background
-Traveling expenses can add up quickly. Especially if you're food focused like me. This tool is meant to highlight various costs (in USD) for food all around the world! 
+# ![logo](https://github.com/Asyan77/FoodAroundtheWorld/assets/124006803/79e03683-7077-4a0e-93fc-4332dc396d33)
 
-Simply think of a destination you're curious about, choose one of five categories to view, hover over that area to quickly and easily see what the average cost of keeping your tummy happy would look like! 
+### Basic Overview
+Zoom around the map and hover over countries to see a display of costs for five different food categories. While analyzing up to 5 countries at a time, compare the cost (in USD) of a cup of cappuccino, a dozen eggs, a kilo of tomatoes, an inexspensive meal for one person, or a 3-course meal for two people all over the world!
 
-Checkout what the cost of a three-course meal for 2 people in an average restaurant looks like in Taipei, Taiwan, or inexpensive meal for 1 in Teran, Iran, or a cappuccino in Tel-Aviv, Israel, a dozen eggs in Reykjavík, Iceland, or even a kilo of tomatoes in Kingston,Jamaica! 
+As you hover over the map you will see the country name along with country flag. Below the map will list the data for that couuntry along with the city name. The countries will shift to the left as you continue to hover without needing to worry about duplicate countries.
 
-Happy Exploring!
-
-Functionality
-In Food Around the World, users can:
-
-- View a world map to see countries to explore
-- Select from 5 options of the data to populate
-- Hover over a country, a pop-up appears
-- Pop-up will display the key-value pairs of the cities within that country and the data the user selected
-
-In addition, this project will include:
-- An About describing the orginstory of how this app came about
-- A production README
-
-![Wireframe](https://github.com/Asyan77/js-project/assets/124006803/e65e3bee-e7a8-4bcd-9b92-705a821bbac3)
+[Start exploring!](https://asyan77.github.io/FoodAroundtheWorld/)
 
 
-Technologies, Libraries, APIs:
--RMaps, Leaflet, svgMAP, or  D3 to render the map with locations and API data from Traveltables for all the prices
+### Credits
+This app uses the following open-source packages: 
+ - [svgMAP](https://www.npmjs.com/package/svgmap) to render the map with locations and popover
+ - [Traveltables API](https://traveltables.com/) for data on prices
+ - [Node.js](https://nodejs.org/en) 
 
-Friday Afternoon & Weekend: researching about how to use API and D3 and hopefully start to make the basic outline of the pages structure.
+### Components
+One of the few challenges was connecting the svgMap to link with data from TravelTables since svgMap's country codes were two-letters (ex: CN) and TravelTable's country codes are three-letters (ex: CHN), or it was the country name in a string (ex:'China'). Using the following code, plus creating a local file with city names, I was then able to link country to country to city, to data! 
+```
+function getCountryNameByCode(countryCode) {
+    if (countryCode in countryCodes) {
+      return countryCodes[countryCode];
+    } else {
+      return 'Country code not found';
+    }
+  }
+  function getCityNameByCode(countryCode) {
+    if (countryCode in cityNamesList) {
+      return cityNamesList[countryCode];
+    } else {
+      return 'CityName not found';
+    }
+  } 
 
-Monday: integrating the data and map together, parsing the data and writing code
+  getCityCostData(countryName, cityName)
+        .then((div) => { 
+            return countryInformation.set(countryId, div) 
+        })
+        .then(result => result.get(countryId))
+        .then((div) => {
+            const body = document.querySelector("#body");
+            rotateChildrenInOrder(body, div)
+    })
+  
+  ```
 
-Tuesday: integrating the data and map together, parsing the data and writing code
+  Another couple challenges I ran into while developing is that I was not able to compare the data side by side. And on top of that I was often getting duplicate countries when I accidentally hovered. I managed to solve these issues using the following code: 
 
-Wednesday: spend time styling with CSS  
+  ```
+   function rotateChildrenInOrder(body, div) {
+        const totalChildren = body.children.length;
+        // Convert HTMLCollection to Array
+        let arrayFromCollection = Array.from(body.children);
 
-Thursday Morning: Freaking out while deploying to GitHub pages. If time, rewrite this proposal as a production README.
+        const hasNoDuplicateText = () => {
+          let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
 
-Bonus features
-Some addition features to look forawrd to are:
+          // If the element doesn't exist, append it
+          if (!elementExists) {
+            return true
+          } else {
+            console.log("An element with the same text content already exists in the collection.");
+            return false
+          }
+        }
+        if (totalChildren >= 5) {
+              let firstElement = body.children[0];
+              firstElement.parentNode.removeChild(firstElement);
+              if (hasNoDuplicateText()) {
+                body.appendChild(div);
+              }
+            } else {
+              if (hasNoDuplicateText()) {
+                body.appendChild(div);
+              }
+            }
+     }
+  ```
 
-- information and pictures of national and local dishes to try in the country and regions
-- information and pictures of specialty produce specific to countries and regions
-- more categories to search by 
+### Upcoming Features
+- Information of national and local dishes to try in the country and regions
+- Information on specialty produce specific to countries and regions
+- More categories compare
+- Search more specifically by cities 

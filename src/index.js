@@ -32,16 +32,13 @@ const svgMapInstance = document.getElementById('svgMap')
    
 
 function getCountryNameByCode(countryCode) {
-    console.log('CountryCode', countryCode)
     if (countryCode in countryCodes) {
       return countryCodes[countryCode];
     } else {
       return 'Country code not found';
     }
   }
-
   function getCityNameByCode(countryCode) {
-    console.log('CountryCode', countryCode)
     if (countryCode in cityNamesList) {
       return cityNamesList[countryCode];
     } else {
