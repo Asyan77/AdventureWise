@@ -1,9 +1,16 @@
 @import "./styles/main.scss";
 
-body {
-    border: #050505 solid;
+// body {
+    // border: #050505 solid;
     // background-color: $oceanColor;
-    background-color: #151313;
+    // background-color: #151313;
+
+// }
+
+#hamburger {
+    width: 115px;
+    height: 150px;
+    padding-top: 50px;
 
 }
 
@@ -11,7 +18,7 @@ body {
 #header {
     display: flex;
     justify-content: space-around;
-    border: #000000 solid;
+    // border: #000000 solid;
     margin-left: 80px;
     margin-right: 80px;
     padding-bottom: 1px;
@@ -21,7 +28,7 @@ body {
 #title-container {
     display: flex;
     justify-content: center;
-    border: #000000 solid;
+    // border: #000000 solid;
 }
 
 
@@ -34,7 +41,8 @@ body {
     font-size: 100px;
     justify-content: center;
     align-items: center;
-    border: #000000 solid;
+    // border: #000000 solid;
+    padding-top: 30px;
     color: rgb(233, 164, 220);
 }
 
@@ -56,18 +64,21 @@ li {
 .wrapper {
     width: 300px;
     padding: 12px;
-    border: #000000 solid;
+    padding-top: 30px;
+    // border: #000000 solid;
 
     h1 {
         width: 300px;
-        font-size: 22px;
-        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        font-size: 18px;
+        font-family:sans-serif;
+        font-weight: 700;
         margin: 0 0 20px 0;
         display: flex;
-        font-weight: 700;
+        // font-weight: 700;
         justify-content: center;
-        background-color: rgb(243, 239, 185);
-        border-bottom: 3px solid rgb(216, 16, 173);
+        // background-color: rgb(243, 239, 185);
+        // border-bottom: 3px solid rgb(216, 16, 173);
         border-radius: 15%;
     }
 }
@@ -76,24 +87,30 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    width: 300px;
-    height: 50px;
+    font-size: 16px;
+    width: 250px;
+    height: 40px;
+    border-right: #000000 solid 2px;
+    margin-left: 20px;
+    padding-right: 55px;
     // background-color: rgb(29, 10, 91);
-    background-color: rgb(56, 29, 92);
+    // background-color: rgb(56, 29, 92);
     // border-left: solid purple;
     // border-right: solid purple;
     
     label {
-        color: rgb(241, 236, 243);
+        color: #666;
         font-family: 'Montserrat', sans-serif;
+        // font-family: sans-serif;
         // font-weight: 700;
         flex-grow: 1;
     }
 
     span {
         color: rgb(72, 205, 72);
+        font-size: 14px;
         font-family: 'Victor Mono', monospace;
+        // font-family: sans-serif;
         // font-weight: 400;
 
     }

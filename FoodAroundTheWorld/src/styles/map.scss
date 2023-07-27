@@ -42,8 +42,9 @@
 
 .svgMap-map-wrapper { // this is the box of the world map
   position: relative;
-  width: 80%;
-  margin-left: 10%;
+  border-radius: 10px;
+  width: 90%;
+  margin-left: 5%;
   padding-top: 33%;
   overflow: hidden;
   background: $oceanColor;
@@ -192,7 +193,8 @@
   // Countries
 
   .svgMap-country {
-    stroke: #fff;
+    stroke: #090909;
+    background-color: aqua;
     stroke-width: 1;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;

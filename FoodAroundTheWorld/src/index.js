@@ -2,8 +2,6 @@ import svgMap from 'svgmap';
 import countryCodes from './countriesList.js';
 import cityNamesList from './cityNamesList.js';
 import { fakeData } from './fakeData.js';
-// import "index.scss";
-// import 'svgmap/dist/svgMap.min.css';
 
 const mealForTwo = "Meal for 2 People, Mid-range Restaurant, Three-course"
 const inexpensiveMealPrice = "Meal in Inexpensive Restaurant"
