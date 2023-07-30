@@ -155,17 +155,17 @@ const countryInformation = new Map();
             return false
           }
         }
-        if (totalChildren >= 5) {
+        if (totalChildren === 5 && hasNoDuplicateText()) {
               let firstElement = body.children[0];
               firstElement.parentNode.removeChild(firstElement);
               if (hasNoDuplicateText()) {
                 body.appendChild(div);
               }
-            } else {
-              if (hasNoDuplicateText()) {
-                body.appendChild(div);
-              }
-            }
+        } else {
+          if (hasNoDuplicateText()) {
+            body.appendChild(div);
+          }
+        }
      }
 
     getCityCostData(countryName, cityName)
