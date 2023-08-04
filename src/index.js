@@ -63,7 +63,7 @@ async function getCityCostData(countryName, cityName) {
     }
   };
     try {
-        const useFakeResponse = true;
+        const useFakeResponse = false;
         let result;
 
         if (useFakeResponse) {
