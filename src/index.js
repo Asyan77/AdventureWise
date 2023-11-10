@@ -53,15 +53,13 @@ const map = new svgMap({
     const countryName = getCountryNameByCode(countryId);
     let summary;
     let url;
+    
 
-    getTeleportAPI(cityName)
-    .then((res) => {
-      summary = getCitySummary(res)
-      url = getCityUrlLink(res)
-      console.log(summary)
-      console.log(url)
-      return summary
-    })
+    // getTeleportAPI(cityName, toolTipdiv)
+    // .then((res) => {
+    //   summary = getCitySummary(res)
+    //   url = getCityUrlLink(res)
+    // })
 
   },
   data: {
@@ -86,18 +84,16 @@ if (map) {
       const countryCode = e.target.dataset.id
       const cityName = getCityNameByCode(countryCode);
       const countryName = getCountryNameByCode(countryCode);
+
       getCityCostData(countryName, cityName)
       .then((div) => { 
         return countryInformation.set(countryCode, div) 
       })
       .then(result => result.get(countryCode))
       .then((div) => {
-        const body = document.querySelector("#body");
+        const body = document.querySelector("#body")
         rotateChildrenInOrder(body, div)
       })
-
-      console.log(cityName)
-      console.log(getTeleportAPI(cityName))
 
     }
   });
@@ -110,26 +106,23 @@ async function getTeleportAPI(city) {
     const response = await fetch(url, {});
       if (response.ok) {
         const result = await response.json();
-        // console.log(result)
+        return result
       } else {
-        //  console.log(response)
      }
   } catch (error) {
-    console.error(error);
+    console.error(error,"blahblah");
   }
 }
 
 function getCitySummary (response) {
   const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
 
-  console.log(summary)
   return summary
 }
 
 function getCityUrlLink(response) {
   const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
 
-  console.log(url);
   return url
 }
 
@@ -153,9 +146,7 @@ async function getCityCostData(countryName, cityName) {
             const response = await fetch(url, options);
             if (response.ok) {
              result = await response.json();
-            //  console.log(result)
             } else {
-              // console.log(response)
             }
         }
        
@@ -169,20 +160,32 @@ async function getCityCostData(countryName, cityName) {
         const parentDiv = document.createElement('div');
         parentDiv.classList.add('wrapper');
         
-        return createDataCards(cityName, countryName, infoArray, parentDiv)
+        let foo = createDataCards(cityName, countryName, infoArray, parentDiv)
+        return foo
 
     } catch (error) {
         console.error(error);
     }
 }
 
-function createDataCards (city, country, infoArray, parentDiv)  {
-  const h1 = document.createElement('h1');
-  h1.innerHTML = `${city}, ${country}`;
-  parentDiv.appendChild(h1);
+async function createDataCards (city, country, infoArray, parentDiv)  {
+  let summary;
+  let url;
 
-  infoArray.forEach(item => parentDiv.appendChild(item)); 
-  return parentDiv;
+  return await getTeleportAPI(city)
+  .then((res) => {
+    summary = getCitySummary(res)
+    url = getCityUrlLink(res)
+
+    //make a link with our fresh new data
+    const h1 = document.createElement('h1');
+    const linkText = `<a href="${url}">${city}, ${country}</a>`
+    h1.innerHTML = linkText
+    parentDiv.appendChild(h1);
+    infoArray.forEach(item => parentDiv.appendChild(item)); 
+    return parentDiv;
+
+  })
 }
 
 function getItemAvgUSDPriceByName(itemName, result, label) {
