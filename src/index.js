@@ -51,6 +51,18 @@ const map = new svgMap({
   onGetTooltip(toolTipdiv, countryId, countryValues) {
     const cityName = getCityNameByCode(countryId);
     const countryName = getCountryNameByCode(countryId);
+    let summary;
+    let url;
+
+    getTeleportAPI(cityName)
+    .then((res) => {
+      summary = getCitySummary(res)
+      url = getCityUrlLink(res)
+      console.log(summary)
+      console.log(url)
+      return summary
+    })
+
   },
   data: {
     data: {
@@ -85,27 +97,42 @@ if (map) {
       })
 
       console.log(cityName)
-      console.log(teleportAPI(cityName))
+      console.log(getTeleportAPI(cityName))
 
     }
   });
 }
 
 
-async function teleportAPI(city) {
+async function getTeleportAPI(city) {
   const url = `https://api.teleport.org/api/cities/?search=${city}&limit=1&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores`
   try {
     const response = await fetch(url, {});
       if (response.ok) {
         const result = await response.json();
-        console.log(result)
+        // console.log(result)
       } else {
-         console.log(response)
+        //  console.log(response)
      }
   } catch (error) {
     console.error(error);
   }
 }
+
+function getCitySummary (response) {
+  const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
+
+  console.log(summary)
+  return summary
+}
+
+function getCityUrlLink(response) {
+  const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
+
+  console.log(url);
+  return url
+}
+
 
 async function getCityCostData(countryName, cityName) {
   const url = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`
@@ -158,7 +185,6 @@ function createDataCards (city, country, infoArray, parentDiv)  {
   return parentDiv;
 }
 
-
 function getItemAvgUSDPriceByName(itemName, result, label) {
   const item = result.prices.find((item) => item.item_name === itemName);
   const divEl = document.createElement('div');
@@ -189,7 +215,6 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
     return divEl
   }
 }
-
 
 function rotateChildrenInOrder(body, div) {
   const totalChildren = body.children.length;
