@@ -30,6 +30,7 @@ window.onload = function() {
   showPopup();
 }
 
+
 function getCountryNameByCode(countryCode) {
   if (countryCode in countryCodesList) {
     return countryCodesList[countryCode];
@@ -48,18 +49,41 @@ function getCityNameByCode(countryCode) {
 // CREATES AND LOADS SVG MAP WITH TOOLTIP
 const map = new svgMap({
   targetElementID: 'svgMap',
+  // flagURL: flagURL,
   onGetTooltip(toolTipdiv, countryId, countryValues) {
     const cityName = getCityNameByCode(countryId);
     const countryName = getCountryNameByCode(countryId);
-    let summary;
-    let url;
+    // console.log(toolTipdiv)
     
+    getTeleportAPI(cityName, toolTipdiv)
+    .then((res) => {
+      const summary = getCitySummary(res)
+      if (summary) {
+        document.getElementById(`summary-${countryId}`).innerHTML = summary
+      }
+    })
 
-    // getTeleportAPI(cityName, toolTipdiv)
-    // .then((res) => {
-    //   summary = getCitySummary(res)
-    //   url = getCityUrlLink(res)
-    // })
+      const hoverDivEle = document.createElement('div');
+      hoverDivEle.classList.add('wrapper');
+
+      const flagDiv = document.createElement("img")
+      flagDiv.id =`${countryId}-flag`
+      flagDiv.src = 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/{0}.svg'
+
+      const locationH1 = document.createElement("h1");
+      locationH1.id =`${cityName}, ${countryName}`
+      locationH1.innerHTML = `${cityName}, ${countryName}`;
+
+      const summarySpan = document.createElement('span');
+      summarySpan.id = `summary-${countryId}`
+
+      hoverDivEle.appendChild(flagDiv);
+      hoverDivEle.appendChild(locationH1);
+      if (summarySpan.innerHTML != null) {
+        hoverDivEle.appendChild(summarySpan);
+      }
+  
+      return hoverDivEle;
 
   },
   data: {
@@ -107,10 +131,8 @@ async function getTeleportAPI(city) {
       if (response.ok) {
         const result = await response.json();
         return result
-      } else {
-     }
+      } 
   } catch (error) {
-    console.error(error,"blahblah");
   }
 }
 
@@ -146,8 +168,7 @@ async function getCityCostData(countryName, cityName) {
             const response = await fetch(url, options);
             if (response.ok) {
              result = await response.json();
-            } else {
-            }
+            } 
         }
        
         const infoArray = [];
@@ -160,30 +181,31 @@ async function getCityCostData(countryName, cityName) {
         const parentDiv = document.createElement('div');
         parentDiv.classList.add('wrapper');
         
-        let foo = createDataCards(cityName, countryName, infoArray, parentDiv)
-        return foo
-
+        return createDataCards(cityName, countryName, infoArray, parentDiv)
     } catch (error) {
         console.error(error);
     }
 }
 
 async function createDataCards (city, country, infoArray, parentDiv)  {
-  let summary;
   let url;
 
   return await getTeleportAPI(city)
   .then((res) => {
-    summary = getCitySummary(res)
     url = getCityUrlLink(res)
-
-    //make a link with our fresh new data
-    const h1 = document.createElement('h1');
-    const linkText = `<a href="${url}">${city}, ${country}</a>`
-    h1.innerHTML = linkText
-    parentDiv.appendChild(h1);
-    infoArray.forEach(item => parentDiv.appendChild(item)); 
-    return parentDiv;
+    if (url) {
+      const h1 = document.createElement('h1');
+      const linkText = `<a href="${url}">${city}, ${country}</a>`
+      h1.innerHTML = linkText
+      parentDiv.appendChild(h1);
+      infoArray.forEach(item => parentDiv.appendChild(item)); 
+      return parentDiv;
+    } else {
+      const h1 = document.createElement('h1');
+      h1.innerHTML = `${cityName}, ${countryName}`;
+      infoArray.forEach(item => parentDiv.appendChild(item));
+      return parentDiv;
+    }
 
   })
 }
@@ -246,22 +268,4 @@ function rotateChildrenInOrder(body, div) {
     }
   }
 }
-
-
-//MODAL
-// const modal = document.getElementById('myModal');
-// const triggerButton = document.getElementById('openModal');
-// const closeBtn = document.querySelector('.close');
-
-// function openModal() {
-//   modal.style.display = 'block';
-// }
-
-// function closeModal() {
-//   modal.style.display = 'none';
-// }
-
-// triggerButton.addEventListener('click', openModal);
-// closeBtn.addEventListener('click', closeModal);
-  
   

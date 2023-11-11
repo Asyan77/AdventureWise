@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="assets/back-ride-ride.gif">
     <script src="./dist/main.js" defer></script>
     <link rel="stylesheet" href="./dist/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,17 +16,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ef485968be.js" crossorigin="anonymous"></script>
     
-    <title>Food Around the World</title>
+    <title>Adventure Awaits!</title>
 </head>
 <body>
    
     <div id="header"> 
-        <img id="hamburger" src="https://media.tenor.com/uqnQ-gmdZlQAAAAi/tubby-burger.gif" alt="">
+        <img id="header-pic1" src="https://media.tenor.com/xJ7Dj_MVlZ0AAAAi/travel-vacation.gif" alt="">
         
         <div id="title-container">
-            <h1 id="title">Food Around the World</h1>
+            <h1 id="title">Adventure Awaits!</h1>
         </div>
-
+        <img id="header-pic2" src="https://media.tenor.com/Eda_xLkNRhYAAAAi/cute-travel.gif" alt="">
+        
         <div class="links-and-hearts">
             <ul id="links">
                 <a href="http://www.linkedin.com/in/ashley-yan" class="linkedIn" target="_blank">
@@ -36,38 +37,32 @@
                     <i class="fa-brands fa-github fa-2xl" style="color: #5f32b3;"></i>        
                 </a>
             </ul>
-
-            <!-- <i class="fa-sharp fa-light fa-pot-food fa-beat-fade fa-2xl" style="color: #ece632;"></i> -->
-
-            <!-- <div class="fa-3x">
-                <i class="fa-solid fa-heart fa-beat"></i>
-                <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s;" ></i>
-                <i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 2s;"></i>
-                <i class="fa-solid fa-heart fa-beat" style="--fa-beat-scale: 2.0;"></i>
-            </div> -->
-<!-- 
-            <i class="fa-light fa-ice-cream fa-beat-fade fa-2xl" style="color: #c5e52a;"></i>
-            <i class="fa-light fa-fish-fins fa-beat-fade fa-2xl" style="color: #ffaf24;"></i>
-            <i class="fa-light fa-wine-glass fa-beat-fade fa-2xl" style="color: #cb2c10;"></i> -->
-
         </div>   
-    </div>
-
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <h2>Welcome! Stay Hungry, Stay Fed :)</h2>
-            <p>Compare the cost of nom noms from around the world! Hover over a country to see average prices, in USD, for market items to restaurant meals. Hover and compare up to 5 countries at a time!</p>
-        </div>
     </div>
     
     <div id="svgMap"></div>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>This is your modal content.</p>
-        </div>
-      </div>
+    
     <div id="body"></div>
 
+    
 </body>
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h2 id="pop-up-header">Welcome, Explorer :)</h2>
+        <h3>Discover your next journey!</h3>
+        <ul>
+            <ol>Simply hover over the map to see a brief description of that country</ol> <br>
+            <ol>Click on a country to show data cards below the map to compare local living costs (in $USD) for up to 5 countries at a time!</ol> <br>
+            <ol>Click each data card for more indepth destination details.</ol> <br>
+            <ol>Happy Travels!</ol>
+            <!-- <li></li>
+            <li></li>
+            <li></li> -->
+       </ul> 
+        <!-- <p id="pop-up-text1"> </p>
+        <p id="pop-up-text2">  </p> -->
+        <!-- <p id="pop-up-text3"></p> -->
+    </div>
+</div>
+
 </html>

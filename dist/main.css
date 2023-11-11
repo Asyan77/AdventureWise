@@ -16,7 +16,7 @@
   background: rgba(0, 0, 0, 0.8);
   pointer-events: none;
   opacity: 0;
-  color: #fff;
+  color: #ffffff;
   transition: opacity 250ms;
 }
 .svgMap-block-zoom-notice-active .svgMap-block-zoom-notice {
@@ -334,7 +334,18 @@ h2 {
   padding-left: 50px;
 }
 
-#hamburger {
+body {
+  border: #050505 solid;
+}
+
+#header-pic1 {
+  width: 15%;
+  height: auto;
+  padding-top: 50px;
+  border: #000000 solid;
+}
+
+#header-pic2 {
   width: 115px;
   height: 150px;
   padding-top: 50px;
@@ -343,6 +354,7 @@ h2 {
 #header {
   display: flex;
   justify-content: space-around;
+  border: #000000 solid;
   margin-left: 80px;
   margin-right: 80px;
   padding-bottom: 1px;
@@ -357,14 +369,14 @@ h2 {
 #title {
   color: 0;
   border: yellow;
-  width: 900px;
-  height: 500px;
+  width: 100%;
+  height: 20vh;
   font-family: "Dancing Script", cursive;
   font-size: 100px;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  padding-top: 30px;
-  color: rgb(233, 164, 220);
+  padding-top: 20px;
+  color: rgb(118, 216, 159);
 }
 
 #links {
@@ -375,7 +387,7 @@ h2 {
   align-items: center;
 }
 
-.modal {
+.popup {
   display: none;
   position: fixed;
   z-index: 1;
@@ -384,14 +396,18 @@ h2 {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  cursor: crosshair;
 }
 
-.modal-content {
-  position: absolute;
+#popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #831616;
   padding: 20px;
   border-radius: 5px;
 }

@@ -1,6 +1,7 @@
 .svgMap-wrapper,
 .svgMap-container {
   position: relative;
+  // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
   // display: flex;
   // justify-content: center;
 }
@@ -15,7 +16,7 @@
   background: rgba(0, 0, 0, 0.8);
   pointer-events: none;
   opacity: 0;
-  color: #fff;
+  color: #ffffff;
   transition: opacity 250ms;
 
   .svgMap-block-zoom-notice-active & {
@@ -49,6 +50,7 @@
   overflow: hidden;
   background: $oceanColor;
   color: $textColor;
+  
 
   * {
     box-sizing: border-box;
@@ -66,6 +68,7 @@
     width: 100%;
     height: 100%;
     margin: 0;
+    
   }
 
   // Controls
@@ -210,6 +213,7 @@
         stroke-width: $mapActiveStrokeWidth;
         fill: rgb(113, 176, 50);
         stroke: rgb(234, 255, 0);
+        
 
       }
     }
@@ -217,6 +221,7 @@
     &.svgMap-active {
       stroke: $mapActiveStrokeColor;
       stroke-width: $mapActiveStrokeWidth;
+      
     }
   }
 }

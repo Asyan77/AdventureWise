@@ -1,13 +1,25 @@
 @import "./styles/main.scss";
 
-// body {
-    // border: #050505 solid;
-    // background-color: $oceanColor;
+body {
+    // display: flex;
+    // flex-direction: column;
+    border: #050505 solid;
     // background-color: #151313;
+    // cursor: url(""), auto;
+    // cursor: none;
+    // cursor: url('assets/plane-cursor-img.gif'),auto;
 
-// }
 
-#hamburger {
+}
+
+#header-pic1 {
+    width: 15%;
+    height: auto;
+    padding-top: 50px;
+    border: #000000 solid;
+
+}
+#header-pic2 {
     width: 115px;
     height: 150px;
     padding-top: 50px;
@@ -18,11 +30,12 @@
 #header {
     display: flex;
     justify-content: space-around;
-    // border: #000000 solid;
+    border: #000000 solid;
     margin-left: 80px;
     margin-right: 80px;
     padding-bottom: 1px;
     height: 200px;
+    // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
 }
 
 #title-container {
@@ -35,15 +48,17 @@
 #title {
     color: red($color: #000000);
     border: yellow;
-    width: 900px;
-    height: 500px;
+    width: 100%;
+    height: 20vh;
     font-family: 'Dancing Script', cursive;
     font-size: 100px;
+    display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     // border: #000000 solid;
-    padding-top: 30px;
-    color: rgb(233, 164, 220);
+    padding-top: 20px;
+    color: rgb(118, 216, 159);
+    // background-color: #fff;
 }
 
 #links {
@@ -55,10 +70,11 @@
     align-items: center;
 }
 
-//MODAL STYLES ----------------------------------->
+//POP-UP STYLES ----------------------------------->
 
-.modal {
+.popup {
     display: none;
+    // flex-direction: column ;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -66,14 +82,19 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    cursor: crosshair;
   }
   
-  .modal-content {
-    position: absolute;
+  #popup-content {
+    // position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #831616;
     padding: 20px;
     border-radius: 5px;
   }
