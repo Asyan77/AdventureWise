@@ -41,7 +41,8 @@
   }
 }
 
-.svgMap-map-wrapper { // this is the box of the world map
+
+.svgMap-map-wrapper {  // this is the box of the world map
   position: relative;
   border-radius: 10px;
   width: 90%;
@@ -50,7 +51,6 @@
   overflow: hidden;
   background: $oceanColor;
   color: $textColor;
-  
 
   * {
     box-sizing: border-box;
@@ -60,6 +60,7 @@
     outline: 0;
   }
 
+  
   .svgMap-map-image { // map itself
     display: block;
     position: absolute;
@@ -71,9 +72,9 @@
     
   }
 
-  // Controls
+  // Controls aka zoom buttons on the bottom left of map
 
-  .svgMap-map-controls-wrapper {
+  .svgMap-map-controls-wrapper { 
     position: absolute;
     bottom: 10px;
     left: 10px;
@@ -213,8 +214,7 @@
         stroke-width: $mapActiveStrokeWidth;
         fill: rgb(113, 176, 50);
         stroke: rgb(234, 255, 0);
-        
-
+        cursor: pointer;
       }
     }
 

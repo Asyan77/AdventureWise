@@ -71,6 +71,7 @@ const map = new svgMap({
       flagDiv.src = 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/{0}.svg'
 
       const locationH1 = document.createElement("h1");
+      locationH1.class = "hover-H1"
       locationH1.id =`${cityName}, ${countryName}`
       locationH1.innerHTML = `${cityName}, ${countryName}`;
 
@@ -195,6 +196,7 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
     url = getCityUrlLink(res)
     if (url) {
       const h1 = document.createElement('h1');
+      h1.id = "data-card-h1"
       const linkText = `<a href="${url}">${city}, ${country}</a>`
       h1.innerHTML = linkText
       parentDiv.appendChild(h1);
@@ -206,7 +208,6 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       infoArray.forEach(item => parentDiv.appendChild(item));
       return parentDiv;
     }
-
   })
 }
 

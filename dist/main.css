@@ -175,6 +175,7 @@
     stroke-width: 1.5;
     fill: rgb(113, 176, 50);
     stroke: rgb(234, 255, 0);
+    cursor: pointer;
   }
 }
 .svgMap-map-wrapper .svgMap-country.svgMap-active {
@@ -294,8 +295,8 @@
   transform: translateX(-50%) scaleY(-1);
 }
 
-.fa-brands {
-  padding-top: 250px;
+h1 {
+  font-size: 30px;
 }
 
 .popup {
@@ -334,57 +335,54 @@ h2 {
   padding-left: 50px;
 }
 
-body {
-  border: #050505 solid;
+#header {
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 1px;
+  height: 22vh;
 }
 
 #header-pic1 {
   width: 15%;
-  height: auto;
-  padding-top: 50px;
-  border: #000000 solid;
-}
-
-#header-pic2 {
-  width: 115px;
-  height: 150px;
-  padding-top: 50px;
-}
-
-#header {
-  display: flex;
-  justify-content: space-around;
-  border: #000000 solid;
-  margin-left: 80px;
-  margin-right: 80px;
-  padding-bottom: 1px;
-  height: 200px;
-}
-
-#title-container {
-  display: flex;
-  justify-content: center;
+  height: 100%;
+  padding-left: 3%;
 }
 
 #title {
-  color: 0;
-  border: yellow;
-  width: 100%;
-  height: 20vh;
+  width: 50%;
+  height: 13vh;
   font-family: "Dancing Script", cursive;
-  font-size: 100px;
+  font-size: 700%;
+  margin-left: 3%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
   color: rgb(118, 216, 159);
 }
 
+#header-pic2 {
+  width: 15%;
+  height: 100%;
+  padding-top: 1%;
+}
+
 #links {
-  height: 50px;
-  width: 100px;
+  height: 2%;
+  width: 4%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-right: 1%;
+  padding-top: 10%;
+}
+
+.linkedIn {
+  color: #2363d1;
+}
+
+.github {
+  padding-left: 22%;
+  color: #5f32b3;
 }
 
 .popup {
@@ -393,10 +391,9 @@ body {
   z-index: 1;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  cursor: crosshair;
 }
 
 #popup-content {
@@ -406,35 +403,44 @@ body {
   align-items: center;
   top: 50%;
   left: 50%;
+  width: 100%;
+  height: 100%;
   transform: translate(-50%, -50%);
-  background-color: #831616;
-  padding: 20px;
+  padding: 5px;
   border-radius: 5px;
 }
 
-.close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  cursor: pointer;
+h2 {
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+}
+
+#popup-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+}
+
+ol {
+  padding-right: 20px;
 }
 
 li {
   display: flex;
   justify-content: space-between;
-  border: #000000 solid;
 }
 
 .wrapper {
-  width: 300px;
+  width: 18vw;
   padding: 12px;
   padding-top: 30px;
 }
-.wrapper h1 {
-  width: 300px;
+.wrapper #data-card-h1 {
+  width: 18vw;
   position: relative;
-  font-size: 18px;
+  font-size: 150%;
   font-family: sans-serif;
   font-weight: 700;
   margin: 0 0 20px 0;
@@ -448,18 +454,21 @@ li {
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  width: 250px;
+  width: 100%;
   height: 40px;
   border-right: #000000 solid 2px;
-  margin-left: 20px;
-  padding-right: 55px;
+  margin-left: 10px;
+  padding-right: 4%;
 }
 .row label {
   color: #666;
   font-family: "Montserrat", sans-serif;
   flex-grow: 1;
+  padding-left: 2%;
 }
 .row span {
+  display: flex;
+  justify-content: flex-end;
   color: rgb(72, 205, 72);
   font-size: 14px;
   font-family: "Victor Mono", monospace;
@@ -468,7 +477,6 @@ li {
 #body {
   display: flex;
   justify-content: space-around;
-  margin-left: 60px;
-  margin-right: 60px;
-  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
