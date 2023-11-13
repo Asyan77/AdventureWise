@@ -22,14 +22,12 @@ function closePopup() {
 }
 
 window.onclick = function(event) {
-  if (event.target === popup) {
-      closePopup()
-  }
+  closePopup()
 }
+
 window.onload = function() {
   showPopup();
 }
-
 
 function getCountryNameByCode(countryCode) {
   if (countryCode in countryCodesList) {
@@ -50,12 +48,11 @@ function getCityNameByCode(countryCode) {
 const map = new svgMap({
   targetElementID: 'svgMap',
   // flagURL: flagURL,
-  onGetTooltip(toolTipdiv, countryId, countryValues) {
+  onGetTooltip(toolTipdiv, countryId, countryValues) { 
     const cityName = getCityNameByCode(countryId);
     const countryName = getCountryNameByCode(countryId);
-    // console.log(toolTipdiv)
-    
-    getTeleportAPI(cityName, toolTipdiv)
+
+    getTeleportAPI(cityName, toolTipdiv) 
     .then((res) => {
       const summary = getCitySummary(res)
       if (summary) {
@@ -109,6 +106,8 @@ if (map) {
       const countryCode = e.target.dataset.id
       const cityName = getCityNameByCode(countryCode);
       const countryName = getCountryNameByCode(countryCode);
+      console.log(cityName, "city")
+      console.log(countryName, "country")
 
       getCityCostData(countryName, cityName)
       .then((div) => { 
@@ -139,17 +138,24 @@ async function getTeleportAPI(city) {
 
 function getCitySummary (response) {
   const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
-
-  return summary
+  if(summary) {
+    return summary
+  } else {
+    return null
+  }
 }
 
 function getCityUrlLink(response) {
   const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
-
-  return url
+  if (url) {
+    console.log(url)
+    return url
+  } else {
+    return null
+  }
 }
 
-
+// fetching to get cost data, then calling createDataCard to make the data cards.
 async function getCityCostData(countryName, cityName) {
   const url = `https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${cityName}&country_name=${countryName}`
   const options = {
@@ -193,19 +199,21 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
 
   return await getTeleportAPI(city)
   .then((res) => {
+    console.log(res)
     url = getCityUrlLink(res)
-    if (url) {
+    if (res === undefined) {
+      const h1 = document.createElement('h1');
+      h1.innerHTML = `${cityName}, ${countryName}`;
+      infoArray.forEach(item => parentDiv.appendChild(item));
+      return parentDiv;
+  
+    } else {
       const h1 = document.createElement('h1');
       h1.id = "data-card-h1"
       const linkText = `<a href="${url}">${city}, ${country}</a>`
       h1.innerHTML = linkText
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item)); 
-      return parentDiv;
-    } else {
-      const h1 = document.createElement('h1');
-      h1.innerHTML = `${cityName}, ${countryName}`;
-      infoArray.forEach(item => parentDiv.appendChild(item));
       return parentDiv;
     }
   })
