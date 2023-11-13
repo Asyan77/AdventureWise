@@ -5,8 +5,10 @@ import { fakeData } from './fakeData.js';
 
 const countryInformation = new Map();
 const popup = document.getElementById("popup");
+const clearDataCardsBtn = document.getElementById("clear-data-cards-btn")
 const svgMapInstance = document.getElementById('svgMap')
 let domain = 'https://food-around-the-world-proxy-server.onrender.com'
+
 
 if (process.env.NODE_ENV !== 'production') {
   domain = 'http://localhost:5001'
@@ -14,7 +16,48 @@ if (process.env.NODE_ENV !== 'production') {
 
 // HANDLES WELCOME POP-UP
 function showPopup() {
-  popup.style.display = "block";
+
+const popupContentDiv = document.createElement("div");
+popupContentDiv.classList.add("popup-content")
+
+const h2 = document.createElement("h2")
+h2.innerHTML =("Discover your next journey!")
+h2.style.color="purple"
+
+const ul = document.createElement("ul");
+ul.id = "popop-ul"
+
+const ol1 = document.createElement("ol")
+ol1.innerHTML= "Hover over a country to see a brief description"
+const br1 = document.createElement("br")
+
+const ol2 = document.createElement("ol")
+ol2.innerHTML = "Click on up to 5 countries at a time to compare local living costs (in $USD)"
+const br2 = document.createElement("br")
+
+const ol3 = document.createElement("ol")
+ol3.innerHTML = "For more indepth destination details click the purple labels of data cards"
+const br3 = document.createElement("br")
+
+const ol4 = document.createElement("ol")
+ol4.innerHTML = "Happy Exploring!"
+
+ul.appendChild(ol1)
+ul.appendChild(br1)
+ul.appendChild(ol2)
+ul.appendChild(br2)
+ul.appendChild(ol3)
+ul.appendChild(br3)
+ul.appendChild(ol4)
+
+popupContentDiv.appendChild(h2)
+popupContentDiv.appendChild(ul)
+
+popup.appendChild(popupContentDiv)
+
+popup.style.display = "block";
+
+return popup
 }
 
 function closePopup() {
@@ -52,7 +95,7 @@ const map = new svgMap({
     const cityName = getCityNameByCode(countryId);
     const countryName = getCountryNameByCode(countryId);
 
-    getTeleportAPI(cityName, toolTipdiv) 
+    getTeleportAPI(cityName) 
     .then((res) => {
       const summary = getCitySummary(res)
       if (summary) {
@@ -64,8 +107,8 @@ const map = new svgMap({
       hoverDivEle.classList.add('wrapper');
 
       const flagDiv = document.createElement("img")
-      flagDiv.id =`${countryId}-flag`
-      flagDiv.src = 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/{0}.svg'
+      // flagDiv.id =`${countryId}-flag`
+      // flagDiv.src = 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/{0}.svg'
 
       const locationH1 = document.createElement("h1");
       locationH1.class = "hover-H1"
@@ -106,8 +149,6 @@ if (map) {
       const countryCode = e.target.dataset.id
       const cityName = getCityNameByCode(countryCode);
       const countryName = getCountryNameByCode(countryCode);
-      console.log(cityName, "city")
-      console.log(countryName, "country")
 
       getCityCostData(countryName, cityName)
       .then((div) => { 
@@ -118,6 +159,8 @@ if (map) {
         const body = document.querySelector("#body")
         rotateChildrenInOrder(body, div)
       })
+
+      console.log(body, "body inside the click ")
 
     }
   });
@@ -137,8 +180,8 @@ async function getTeleportAPI(city) {
 }
 
 function getCitySummary (response) {
-  const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
-  if(summary) {
+  if(response._embedded['city:search-results'][0]?._embedded['city:item']?._embedded) {
+    const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
     return summary
   } else {
     return null
@@ -146,9 +189,8 @@ function getCitySummary (response) {
 }
 
 function getCityUrlLink(response) {
-  const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
-  if (url) {
-    console.log(url)
+  if (response._embedded['city:search-results'][0]?._embedded['city:item']?._embedded) {
+    const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
     return url
   } else {
     return null
@@ -199,18 +241,19 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
 
   return await getTeleportAPI(city)
   .then((res) => {
-    console.log(res)
     url = getCityUrlLink(res)
-    if (res === undefined) {
+    if (url === null) {
       const h1 = document.createElement('h1');
-      h1.innerHTML = `${cityName}, ${countryName}`;
+      h1.id = "data-card-h1"
+      h1.innerHTML = `${city}, ${country}`;
+      parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item));
       return parentDiv;
-  
     } else {
       const h1 = document.createElement('h1');
       h1.id = "data-card-h1"
-      const linkText = `<a href="${url}">${city}, ${country}</a>`
+      const linkText = `<a href="${url}" target="_blank">${city}, ${country}</a>`
+      h1.setAttribute
       h1.innerHTML = linkText
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item)); 
@@ -253,6 +296,7 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
 function rotateChildrenInOrder(body, div) {
   const totalChildren = body.children.length;
   let arrayFromCollection = Array.from(body.children);
+  // console.log(body.children[2], "body inside rotate children")
 
   const hasNoDuplicateText = () => {
     let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
@@ -277,4 +321,14 @@ function rotateChildrenInOrder(body, div) {
     }
   }
 }
-  
+
+// clearDataCardsBtn.addEventListener("click", clearALLDataCards)
+
+// function clearALLDataCards (e) {
+//   // const bodyOfCards = document.getElementById("body")
+//   if(bodyOfCards.children.length) {
+//     bodyOfCards.remove(bodyOfCards.childNodes)
+//     return body
+//   }
+
+// }
