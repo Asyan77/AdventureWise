@@ -13,42 +13,61 @@ body {
 
 #header {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-left: 5%;
     margin-right: 5%;
     padding-bottom: 1px;
     height: 22vh;
     // border: #000000 solid;
+    // background-color: blue;
     // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
 }
 
 #header-pic1 {
-    width: 15%;
-    height: 100%;
-    padding-left: 3%;
-    // padding-top: 2%;
+    width: 12%;
+    height: 90%;
+    padding-left: 2%;
+    padding-top: 1%;
     // border: #000000 solid;
+}
 
+#header-pic2 {
+    width: 13%;
+    height: 100%;
+    // padding-left: 2%;
+    padding-top: 1%;
+    // border: #000000 solid;
 }
 
 #title {
     width: 50%;
-    height: 13vh;
-    font-family: 'Dancing Script', cursive;
-    font-size: 700%;
-    margin-left: 3%;
+    height: 14vh;
+    font-family: 'Edu SA Beginner', cursive;
+    font-size: 6vw;
+    margin-left: 1%;
     display: flex;
     justify-content: center;
     color: rgb(118, 216, 159);
     // border: #000000 solid;
-    // background-color: #d71616;
+    // background-color: #736ab8;
+    // margin-bottom: 33px;
 }
 
-#header-pic2 {
-    width: 15%;
+#header-pic3 {
+    width: 10%;
+    height: 80%;
+    padding-top: 2%;
+    margin-bottom: 4%;
+    // border: #000000 solid;
+}
+
+#header-pic4 {
+    width: 12%;
     height: 100%;
+    padding-left: 2%;
     padding-top: 1%;
     // border: #000000 solid;
-
 }
 
 #links {
@@ -182,7 +201,7 @@ li {
     width: 14vw;
     margin-left: 45%;
     background-color: rgb(85, 89, 210);
-    font-size:x-large;
-    font-family:  'Edu SA Beginner', cursive;
+    font-size: x-large;
+    font-family:'Edu SA Beginner', cursive;
 }
 

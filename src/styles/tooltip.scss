@@ -6,7 +6,7 @@
     background: lavenderblush;
     transform: translate(-50%, -100%);
     // border-bottom: 1px solid #000;
-    font-family: 'Gruppo', sans-serif;
+    font-family: 'Edu SA Beginner', cursive;
     font-size: 25px;
     border: lime solid 3px;
     border-radius: 15px;
@@ -65,38 +65,6 @@
       color: $textColorLight;
       margin: -5px 0 0;
   
-      table {
-        padding: 0;
-        border-spacing: 0px;
-        margin: auto;
-  
-        td {
-          padding: 2px 0;
-          text-align: left;
-  
-          span {
-            color: $textColor;
-          }
-  
-          &:first-child {
-            padding-right: 10px;
-            text-align: right;
-          }
-  
-          sup {
-            vertical-align: baseline;
-            position: relative;
-            top: -5px;
-          }
-        }
-      }
-  
-      .svgMap-tooltip-no-data {
-        padding: 2px 0;
-        color: $textColorLight;
-        font-style: italic;
-        font-size: 1px;
-      }
     }
   
     .svgMap-tooltip-pointer {
