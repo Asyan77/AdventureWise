@@ -1,16 +1,15 @@
 @import "./styles/main.scss";
 
-// body {
-//     display: flex;
-//     flex-direction: column;
-//     border: #050505 solid;
-//     height: 100%;
-//     width: 100%;
-//     background-color: #151313;
-//     // cursor: url(""), auto;
-//     // cursor: none;
-//     // cursor: url('assets/plane-cursor-img.gif'),auto;
-// }
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // border: #050505 solid;
+    // background-color: #151313;
+    // cursor: url(""), auto;
+    // cursor: none;
+    // cursor: url('assets/plane-cursor-img.gif'),auto;
+}
 
 #header {
     display: flex;
@@ -169,4 +168,36 @@ li {
 }
 
 
+// CLEAR ALL DATA CARDS BTN-----------
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(63, 200, 111);
+    border-radius: 5px;
+    height: 7vh;
+    width: 14vw;
+    margin-left: 45%;
+    background-color: rgb(85, 89, 210);
+    font-size:x-large;
+    font-family:  'Edu SA Beginner', cursive;
+}
+
+// #clear-data-cards-btn {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     color: rgb(63, 200, 111);
+//     border-radius: 5px;
+//     height: 7vh;
+//     width: 14vw;
+//     margin-left: 45%;
+//     background-color: rgb(85, 89, 210);
+//     font-size:x-large;
+//     font-family:  'Edu SA Beginner', cursive;
+// }
 

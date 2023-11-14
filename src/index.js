@@ -6,6 +6,7 @@ import { fakeData } from './fakeData.js';
 const countryInformation = new Map();
 const popup = document.getElementById("popup");
 const clearDataCardsBtn = document.getElementById("clear-data-cards-btn")
+clearDataCardsBtn.classList.add("hide")
 const svgMapInstance = document.getElementById('svgMap')
 let domain = 'https://food-around-the-world-proxy-server.onrender.com'
 
@@ -159,9 +160,6 @@ if (map) {
         const body = document.querySelector("#body")
         rotateChildrenInOrder(body, div)
       })
-
-      console.log(body, "body inside the click ")
-
     }
   });
 }
@@ -238,6 +236,9 @@ async function getCityCostData(countryName, cityName) {
 
 async function createDataCards (city, country, infoArray, parentDiv)  {
   let url;
+  const body = document.getElementById("body")
+  clearDataCardsBtn.classList.remove("hide")
+  clearDataCardsBtn.classList.add("show")
 
   return await getTeleportAPI(city)
   .then((res) => {
@@ -296,7 +297,6 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
 function rotateChildrenInOrder(body, div) {
   const totalChildren = body.children.length;
   let arrayFromCollection = Array.from(body.children);
-  // console.log(body.children[2], "body inside rotate children")
 
   const hasNoDuplicateText = () => {
     let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
@@ -322,13 +322,14 @@ function rotateChildrenInOrder(body, div) {
   }
 }
 
-// clearDataCardsBtn.addEventListener("click", clearALLDataCards)
+clearDataCardsBtn.addEventListener("click", clearALLDataCards)
 
-// function clearALLDataCards (e) {
-//   // const bodyOfCards = document.getElementById("body")
-//   if(bodyOfCards.children.length) {
-//     bodyOfCards.remove(bodyOfCards.childNodes)
-//     return body
-//   }
+function clearALLDataCards (e) {
+  let arrayOfChildren = Array.from(body.children);
+  console.log(body, "before clearing")
+  arrayOfChildren.forEach(kid => body.removeChild(kid))
+  clearDataCardsBtn.classList.add("hide")
+  clearDataCardsBtn.classList.remove("show")
+ 
+}
 
-// }
