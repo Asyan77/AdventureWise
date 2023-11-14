@@ -213,7 +213,7 @@ async function getCityCostData(countryName, cityName) {
     }
   };
     try {
-        const useFakeResponse = true;
+        const useFakeResponse = false;
         let result;
 
         if (useFakeResponse) {
@@ -229,7 +229,7 @@ async function getCityCostData(countryName, cityName) {
         infoArray.push(getItemAvgUSDPriceByName("Tomato, 1 kg", result, 'Tomatoes - 1kg'));
         infoArray.push(getItemAvgUSDPriceByName("Gasoline, 1 liter", result, "Gasoline, 1L"));
         infoArray.push(getItemAvgUSDPriceByName("Meal for 2 People, Mid-range Restaurant, Three-course", result, '3-Course Meal (2ppl)'));
-        infoArray.push(getItemAvgUSDPriceByName("Average Monthly Net Salary, After Tax", result, 'Salary (after tax)'));
+        infoArray.push(getItemAvgUSDPriceByName("Average Monthly Net Salary, After Tax", result, 'Salary (Monthly, after tax)'));
         infoArray.push(getItemAvgUSDPriceByName("One bedroom apartment in city centre", result, "Rent (1bd Apt)"));
       
         const parentDiv = document.createElement('div');
@@ -237,7 +237,7 @@ async function getCityCostData(countryName, cityName) {
         
         return createDataCards(cityName, countryName, infoArray, parentDiv)
     } catch (error) {
-        console.error(error);
+        // console.error(error);
     }
 }
 
