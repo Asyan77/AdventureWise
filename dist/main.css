@@ -335,33 +335,33 @@ body {
   justify-content: center;
   align-items: center;
   height: 70%;
-  width: 100%;
+  width: 80%;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 7vw;
+  font-size: 6vw;
   font-weight: 100;
-  margin-left: 3%;
+  margin-left: 6%;
   color: rgb(118, 216, 159);
 }
 
 #header-pic2 {
   height: 80%;
-  padding-top: 3%;
+  padding-top: 2%;
 }
 
 #header-pic3 {
   height: 100%;
-  padding-top: 2%;
+  padding-top: 1%;
 }
 
 .linkedIn {
   height: 22vh;
-  padding-top: 11%;
+  padding-top: 8%;
   padding-left: 2%;
   color: #2363d1;
 }
 
 .github {
-  padding-top: 11%;
+  padding-top: 8%;
   padding-left: 2%;
   color: #5f32b3;
 }
