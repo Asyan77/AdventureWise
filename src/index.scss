@@ -25,14 +25,8 @@ body {
     // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
 }
 
-#header-pic1 {
-    height: 80%;
-    padding-left: 2%;
-    padding-top: 2%;
-    // border: #000000 solid;
-}
 
-#header-pic2 {
+#header-pic1 {
     padding-left: 2%;
     padding-top: 8px;
     // border: #000000 solid;
@@ -42,43 +36,53 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
+    height: 70%;
+    width: 100%;
     // font-family:  'Raleway', sans-serif;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 6vw;
+    font-size: 7vw;
     font-weight: 100;
     margin-left: 3%;
+    // padding-right: 3%;
     color: rgb(118, 216, 159);
-
+    
     // border: #000000 solid;
     // background-color: #736ab8;
 }
 
-#header-pic3 {
+#header-pic2 {
     height: 80%;
-    padding-left: 2%;
-    padding-top: 2%;
-    margin-bottom: 4%;
+    // margin-: 2%;
+    padding-top: 3%;
+    // background-color: burlywood;
     // border: #000000 solid;
 }
+// #header-pic3 {
+//     height: 80%;
+//     padding-left: 2%;
+//     padding-top: 2%;
+//     margin-bottom: 4%;
+//     // border: #000000 solid;
+// }
 
-#header-pic4 {
+#header-pic3 {
     height: 100%;
     // padding-left: 2%;
-    padding-top: 1%;
+    padding-top: 2%;
+    // background-color: cadetblue;
     // border: #000000 solid;
 }
 
 .linkedIn {
     height: 22vh;
-    padding-top: 8%;
+    padding-top: 11%;
     padding-left: 2%;
     color:  #2363d1;
     // background-color: aquamarine;
 }
 
 .github {
-    padding-top: 8%;
+    padding-top: 11%;
     padding-left: 2%;
     color:  #5f32b3;
     // background-color: aquamarine;

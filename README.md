@@ -1,9 +1,13 @@
 # ![logo](https://github.com/Asyan77/FoodAroundtheWorld/assets/124006803/79e03683-7077-4a0e-93fc-4332dc396d33)
 
 ### Basic Overview
-Zoom around the map and hover over countries to see a display of costs for five different food categories. While analyzing up to 5 countries at a time, compare the cost (in USD) of a cup of cappuccino, a dozen eggs, a kilo of tomatoes, an inexspensive meal for one person, or a 3-course meal for two people all over the world!
+This app is intended to help you discover and/or research destinations for moving abroad or for long term visits, depending on which factors are important for you. There are 3 ways to interact with this app. 
 
-As you hover over the map you will see the country name along with country flag. Below the map will list the data for that couuntry along with the city name. The countries will shift to the left as you continue to hover without needing to worry about duplicate countries.
+1. As you hover over countries on the map, a tool tip appears with a brief description and rating of a major city from that country.
+
+2. Clicking on a country will produce a data card for the major city of that country. The data card displays four categories of basic living costs, plus the average salary. You can compare up to 5 locations at a time. There is a button underneath the cards to clear you selection so you can choose new areas to compare. 
+
+3. Click on the underlined labels in the data cards for more detailed information on the quality of life for each location.
 
 [Start exploring!](https://asyan77.github.io/FoodAroundtheWorld/)
 
@@ -13,6 +17,7 @@ This app uses the following open-source packages:
  - [svgMAP](https://www.npmjs.com/package/svgmap) to render the map with locations and popover
  - [Traveltables API](https://traveltables.com/) for data on prices
  - [Node.js](https://nodejs.org/en) 
+ - [Teleport Pubic APIS](https://developers.teleport.org/api/)
 
 ### Components
 One of the few challenges was connecting the svgMap to link with data from TravelTables since svgMap's country codes were two-letters (ex: CN) and TravelTable's country codes are three-letters (ex: CHN), or it was the country name in a string (ex:'China'). Using the following code, plus creating a local file with city names, I was then able to link country to country to city, to data! 
@@ -78,7 +83,7 @@ function getCountryNameByCode(countryCode) {
   ```
 
 ### Upcoming Features
-- Information of national and local dishes to try in the country and regions
-- Information on specialty produce specific to countries and regions
+- Information of national and local food in the country/region
+- Information on history or attractions in the country/region
 - More categories compare
-- Search more specifically by cities 
+- More cities within each country to compare

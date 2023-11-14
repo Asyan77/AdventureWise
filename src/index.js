@@ -29,15 +29,15 @@ const ul = document.createElement("ul");
 ul.id = "popop-ul"
 
 const ol1 = document.createElement("ol")
-ol1.innerHTML= "Hover over a country for a brief description"
+ol1.innerHTML= "Hover over a country for a brief description and rating"
 const br1 = document.createElement("br")
 
 const ol2 = document.createElement("ol")
-ol2.innerHTML = "Click on up to 5 countries at a time to compare local living costs, in $USD"
+ol2.innerHTML = "Click on up to 5 countries at a time to compare local living costs and average salary, in $USD"
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("ol")
-ol3.innerHTML = "For more indepth destination details click the underlined labels of data cards"
+ol3.innerHTML = "For more indepth destination details, click the underlined labels of the data cards"
 const br3 = document.createElement("br")
 
 const ol4 = document.createElement("ol")
@@ -168,8 +168,14 @@ if (map) {
 
 async function getTeleportAPI(city) {
   const url = `https://api.teleport.org/api/cities/?search=${city}&limit=1&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores`
+  const options = {
+    method: "GET",
+    headers: {
+     "Accept": "application/vnd.teleport.v1+json"
+    }
+  }
   try {
-    const response = await fetch(url, {});
+    const response = await fetch(url, options);
       if (response.ok) {
         const result = await response.json();
         return result
@@ -325,7 +331,6 @@ clearDataCardsBtn.addEventListener("click", clearALLDataCards)
 
 function clearALLDataCards (e) {
   let arrayOfChildren = Array.from(body.children);
-  console.log(body, "before clearing")
   arrayOfChildren.forEach(kid => body.removeChild(kid))
   clearDataCardsBtn.classList.add("hide")
   clearDataCardsBtn.classList.remove("show")
