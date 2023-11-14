@@ -124,24 +124,26 @@ body {
 }
   
 // DATA CARDS ----------------------------------------->
-
-li {
+#body { //box for all the data cards
     display: flex;
-    justify-content: space-between;
-    // border: #bf1313 solid;
+    justify-content:flex-start;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-top: 12px;
+    // border: #000000 solid;
 
 }
 
-.wrapper {
+.wrapper { // each individual data card
     width: 18vw;
     padding: 12px;
     padding-top: 20px;
     background-color: lavenderblush;
     border: #3f0ba8 solid 5px;
-    // margin-right: 3%;
+    margin-right: 1%;
     // padding-right: 3%;
 
-    #data-card-h1 {
+    #data-card-h1 { 
         width: 18vw;
         position: relative;
         font-family: 'Edu SA Beginner', cursive;
@@ -205,14 +207,6 @@ li {
     }
 }
 
-#body {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 5%;
-    margin-right: 5%;
-    // border: #000000 solid;
-    // width: 90%;
-}
 
 
 // CLEAR ALL DATA CARDS BTN-----------
