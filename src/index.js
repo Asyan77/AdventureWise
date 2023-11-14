@@ -29,15 +29,15 @@ const ul = document.createElement("ul");
 ul.id = "popop-ul"
 
 const ol1 = document.createElement("ol")
-ol1.innerHTML= "Hover over a country to see a brief description"
+ol1.innerHTML= "Hover over a country for a brief description"
 const br1 = document.createElement("br")
 
 const ol2 = document.createElement("ol")
-ol2.innerHTML = "Click on up to 5 countries at a time to compare local living costs (in $USD)"
+ol2.innerHTML = "Click on up to 5 countries at a time to compare local living costs, in $USD"
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("ol")
-ol3.innerHTML = "For more indepth destination details click the purple labels of data cards"
+ol3.innerHTML = "For more indepth destination details click the green labels of data cards"
 const br3 = document.createElement("br")
 
 const ol4 = document.createElement("ol")
@@ -253,9 +253,10 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
     } else {
       const h1 = document.createElement('h1');
       h1.id = "data-card-h1"
-      const linkText = `<a href="${url}" target="_blank">${city}, ${country}</a>`
+      const linkText = `<a href="${url}" target="_blank" style="color: green">${city}, ${country}</a>`
       h1.setAttribute
       h1.innerHTML = linkText
+      h1.style.color = "green"
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item)); 
       return parentDiv;
@@ -304,7 +305,6 @@ function rotateChildrenInOrder(body, div) {
     if (!elementExists) {
       return true
     } else {
-      console.log("This is a duplicate.");
       return false
     }
   }
