@@ -1,7 +1,7 @@
-# ![logo](https://github.com/Asyan77/FoodAroundtheWorld/assets/124006803/79e03683-7077-4a0e-93fc-4332dc396d33)
+# ![logo](assets/header.png)
 
 ### Basic Overview
-This app is intended to help you discover and/or research destinations for moving abroad or for long term visits, depending on which factors are important for you. There are 3 ways to interact with this app. 
+This app is intended to help you discover and/or research destinations for moving abroad or for long term visits, depending on which factors are important for you. There are 3 ways to interact with this app:
 
 1. As you hover over countries on the map, a tool tip appears with a brief description and rating of a major city from that country.
 
@@ -87,3 +87,4 @@ function getCountryNameByCode(countryCode) {
 - Information on history or attractions in the country/region
 - More categories compare
 - More cities within each country to compare
+- Add a currency converter
