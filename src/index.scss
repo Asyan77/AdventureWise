@@ -4,8 +4,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     // border: #050505 solid;
-    // background-color: #151313;
+    background-color: #0a4886;
     // cursor: url(""), auto;
     // cursor: none;
     // cursor: url('assets/plane-cursor-img.gif'),auto;
@@ -17,78 +18,70 @@ body {
     justify-content: center;
     margin-left: 5%;
     margin-right: 5%;
-    padding-bottom: 1px;
-    height: 22vh;
+    padding-bottom: 8px;
+    height: 16vh;
     // border: #000000 solid;
     // background-color: blue;
     // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
 }
 
 #header-pic1 {
-    width: 12%;
-    height: 90%;
+    height: 80%;
     padding-left: 2%;
-    padding-top: 1%;
+    padding-top: 2%;
     // border: #000000 solid;
 }
 
 #header-pic2 {
-    width: 13%;
-    height: 100%;
-    // padding-left: 2%;
-    padding-top: 1%;
+    padding-left: 2%;
+    padding-top: 8px;
     // border: #000000 solid;
 }
 
 #title {
-    width: 50%;
-    height: 14vh;
-    font-family: 'Edu SA Beginner', cursive;
-    font-size: 6vw;
-    margin-left: 1%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 50%;
+    // font-family:  'Raleway', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 6vw;
+    font-weight: 100;
+    margin-left: 3%;
     color: rgb(118, 216, 159);
+
     // border: #000000 solid;
     // background-color: #736ab8;
-    // margin-bottom: 33px;
 }
 
 #header-pic3 {
-    width: 10%;
     height: 80%;
+    padding-left: 2%;
     padding-top: 2%;
     margin-bottom: 4%;
     // border: #000000 solid;
 }
 
 #header-pic4 {
-    width: 12%;
     height: 100%;
-    padding-left: 2%;
+    // padding-left: 2%;
     padding-top: 1%;
     // border: #000000 solid;
 }
 
-#links {
-    height: 2%;
-    width: 4%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-right: 1%;
-    padding-top: 10%;
-    // background-color: aquamarine;
-
-}
-
 .linkedIn {
+    height: 22vh;
+    padding-top: 8%;
+    padding-left: 2%;
     color:  #2363d1;
+    // background-color: aquamarine;
 }
 
 .github {
-    padding-left: 22%;
+    padding-top: 8%;
+    padding-left: 2%;
     color:  #5f32b3;
+    // background-color: aquamarine;
 }
 
 //POP-UP STYLES ----------------------------------->
@@ -109,6 +102,20 @@ body {
     justify-content: center;
     padding-right: 20px;
   }
+
+
+
+
+
+//HOVER TOOLTIP STYLES-------------------------------->
+// .hover-H1 {
+
+// }
+
+.summary {
+    font-family: 'Montserrat', sans-serif;;
+
+}
   
 // DATA CARDS ----------------------------------------->
 
@@ -121,8 +128,9 @@ li {
 .wrapper {
     width: 18vw;
     padding: 12px;
-    padding-top: 30px;
-    // border: #000000 solid;
+    padding-top: 20px;
+    background-color: lavenderblush;
+    border: #3f0ba8 solid 3px;
     // margin-right: 3%;
     // padding-right: 3%;
 
@@ -134,6 +142,7 @@ li {
         margin: 0 0 20px 0;
         display: flex;
         justify-content: center;
+        color: #3f0ba8;
         border-radius: 15%;
         // background-color: rgb(243, 239, 185);
         // border-bottom: 3px solid rgb(216, 16, 173);
@@ -141,34 +150,47 @@ li {
     }
 }
 
+
+#data-card-h1-with-link {
+    width: 18vw;
+    position: relative;
+    font-family: 'Edu SA Beginner', cursive;
+    color: #3f0ba8;
+    font-weight: 300;
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 15%;
+}
+
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    width: 100%;
     height: 40px;
-    border-right: #000000 solid 2px;
-    margin-left: 10px;
-    padding-right: 4%;
+    // width: 100%;
+    // border-right: #000000 solid 2px;
+    // margin-left: 10px;
+    // padding-right: 4%;
     // background-color: rgb(29, 10, 91);
     // background-color: rgb(56, 29, 92);
     
     label {
+        // color: #3f0ba8;
         color: #666;
         font-family: 'Montserrat', sans-serif;
-        // font-family: sans-serif;
-        // font-weight: 700;
         flex-grow: 1;
-        padding-left: 2%;
+        padding-left: 2px;
     }
 
     span {
         display: flex;
         justify-content: flex-end;
-        color: rgb(72, 205, 72);
+        color: rgb(7, 177, 7);
         font-size: 14px;
         font-family: 'Victor Mono', monospace;
+        padding-right: 10px;
         // font-family: sans-serif;
         // font-weight: 400;
         // background-color: aqua;
@@ -181,6 +203,7 @@ li {
     justify-content: space-around;
     margin-left: 5%;
     margin-right: 5%;
+  
     // border: #000000 solid;
     // width: 90%;
 }
@@ -197,6 +220,7 @@ li {
     align-items: center;
     color: rgb(63, 200, 111);
     border-radius: 5px;
+    border: rgb(30, 7, 157) solid 3px;
     height: 7vh;
     width: 14vw;
     margin-left: 45%;

@@ -3,12 +3,12 @@
     position: absolute;
     z-index: 2;
     border-radius: 2px;
-    background: lavenderblush;
+    background:  lavender;
     transform: translate(-50%, -100%);
     // border-bottom: 1px solid #000;
     font-family: 'Edu SA Beginner', cursive;
-    font-size: 25px;
-    border: lime solid 3px;
+    font-size: 18px;
+    border:  rgb(118, 216, 159) solid 3px;
     border-radius: 15px;
     display: none;
     pointer-events: none;
@@ -80,7 +80,7 @@
         content: '';
         width: 20px;
         height: 20px;
-        background: #fff;
+        background: #1210a5;
         border: 1px solid #000;
         position: absolute;
         bottom: 6px;

@@ -37,7 +37,7 @@ ol2.innerHTML = "Click on up to 5 countries at a time to compare local living co
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("ol")
-ol3.innerHTML = "For more indepth destination details click the green labels of data cards"
+ol3.innerHTML = "For more indepth destination details click the underlined labels of data cards"
 const br3 = document.createElement("br")
 
 const ol4 = document.createElement("ol")
@@ -118,8 +118,9 @@ const map = new svgMap({
 
       const summarySpan = document.createElement('span');
       summarySpan.id = `summary-${countryId}`
+      summarySpan.classList.add("summary")
 
-      hoverDivEle.appendChild(flagDiv);
+      // hoverDivEle.appendChild(flagDiv);
       hoverDivEle.appendChild(locationH1);
       if (summarySpan.innerHTML != null) {
         hoverDivEle.appendChild(summarySpan);
@@ -252,11 +253,9 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       return parentDiv;
     } else {
       const h1 = document.createElement('h1');
-      h1.id = "data-card-h1"
-      const linkText = `<a href="${url}" target="_blank" style="color: green">${city}, ${country}</a>`
-      h1.setAttribute
+      h1.id = "data-card-h1-with-link"
+      const linkText = `<a href="${url}" target="_blank" >${city}, ${country}</a>`
       h1.innerHTML = linkText
-      h1.style.color = "green"
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item)); 
       return parentDiv;
