@@ -33,7 +33,7 @@ ol1.innerHTML= "Hover over a country for a brief description and rating"
 const br1 = document.createElement("br")
 
 const ol2 = document.createElement("ol")
-ol2.innerHTML = "Click on up to 5 countries at a time to compare local living costs and average salary, in $USD"
+ol2.innerHTML = "Click on up to 4 countries at a time to compare local living costs and average salary, in $USD"
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("ol")
@@ -314,7 +314,7 @@ function rotateChildrenInOrder(body, div) {
     }
   }
 
-  if (totalChildren === 5 && hasNoDuplicateText()) {
+  if (totalChildren === 4 && hasNoDuplicateText()) {
     let firstElement = body.children[0];
     firstElement.parentNode.removeChild(firstElement);
     if (hasNoDuplicateText()) {

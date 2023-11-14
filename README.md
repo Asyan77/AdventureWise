@@ -5,7 +5,7 @@ This app is intended to help you discover and/or research destinations for movin
 
 1. As you hover over countries on the map, a tool tip appears with a brief description and rating of a major city from that country.
 
-2. Clicking on a country will produce a data card for the major city of that country. The data card displays four categories of basic living costs, plus the average salary. You can compare up to 5 locations at a time. There is a button underneath the cards to clear you selection so you can choose new areas to compare. 
+2. Clicking on a country will produce a data card for the major city of that country. The data card displays four categories of basic living costs, plus the average salary. You can compare up to 4 location at a time. There is a button underneath the cards to clear you selection so you can choose new areas to compare. 
 
 3. Click on the underlined labels in the data cards for more detailed information on the quality of life for each location.
 
@@ -14,8 +14,8 @@ This app is intended to help you discover and/or research destinations for movin
 
 ### Credits
 This app uses the following open-source packages: 
- - [svgMAP](https://www.npmjs.com/package/svgmap) to render the map with locations and popover
- - [Traveltables API](https://traveltables.com/) for data on prices
+ - [svgMAP](https://www.npmjs.com/package/svgmap) to render the map with countries and tooltip. 
+ - [Traveltables API](https://traveltables.com/) for data on living costs
  - [Node.js](https://nodejs.org/en) 
  - [Teleport Pubic APIS](https://developers.teleport.org/api/)
 

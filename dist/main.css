@@ -397,7 +397,7 @@ li {
   padding: 12px;
   padding-top: 20px;
   background-color: lavenderblush;
-  border: #3f0ba8 solid 3px;
+  border: #3f0ba8 solid 5px;
 }
 .wrapper #data-card-h1 {
   width: 18vw;
@@ -447,7 +447,7 @@ li {
 
 #body {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
 }
