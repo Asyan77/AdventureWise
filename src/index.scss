@@ -114,12 +114,33 @@ body {
   }
 
 //HOVER TOOLTIP STYLES-------------------------------->
-// .hover-H1 {
 
-// }
+.hover-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    width:22vw;
+    padding: 12px;
+    padding-top: 20px;
+    background-color: lavenderblush;
+    border: #3f0ba8 solid 5px;
+    margin-right: 1%;
+}
+
+.flag {
+    width: 19%;
+    padding-left: 40%;
+}
+.hover-h1 {
+    display: flex;
+    justify-content: center;
+    // background-color: cadetblue;
+
+}
 
 .summary {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+    // background-color: brown;
 
 }
   

@@ -80,12 +80,13 @@ function getCountryNameByCode(countryCode) {
     return 'Country code not found';
   }
 }
+
 function getCityNameByCode(countryCode) {
   if (countryCode in cityNamesList) {
     return cityNamesList[countryCode];
-  } else {
-    return 'CityName not found';
-  }
+  } //else {
+  //   return 'CityName not found';
+  // }
 }
 
 // CREATES AND LOADS SVG MAP WITH TOOLTIP
@@ -105,14 +106,15 @@ const map = new svgMap({
     })
 
       const hoverDivEle = document.createElement('div');
-      hoverDivEle.classList.add('wrapper');
+      hoverDivEle.classList.add('hover-wrapper');
 
       const flagDiv = document.createElement("img")
-      // flagDiv.id =`${countryId}-flag`
-      // flagDiv.src = 'https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/{0}.svg'
+      flagDiv.id =`${countryId}-flag`
+      flagDiv.classList.add("flag")
+      flagDiv.src = `https://cdn.jsdelivr.net/gh/hjnilsson/country-flags@latest/svg/${countryId.toLowerCase()}.svg`
 
       const locationH1 = document.createElement("h1");
-      locationH1.class = "hover-H1"
+      locationH1.classList.add("hover-h1")
       locationH1.id =`${cityName}, ${countryName}`
       locationH1.innerHTML = `${cityName}, ${countryName}`;
 
@@ -120,7 +122,7 @@ const map = new svgMap({
       summarySpan.id = `summary-${countryId}`
       summarySpan.classList.add("summary")
 
-      // hoverDivEle.appendChild(flagDiv);
+      hoverDivEle.appendChild(flagDiv);
       hoverDivEle.appendChild(locationH1);
       if (summarySpan.innerHTML != null) {
         hoverDivEle.appendChild(summarySpan);
