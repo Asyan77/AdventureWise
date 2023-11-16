@@ -12,7 +12,7 @@ This app is intended to help you discover and/or research destinations for movin
 [Start exploring!](https://asyan77.github.io/FoodAroundtheWorld/)
 
 ### Video Demo 
-[![Watch the video](assets/small-screen-shot.png)](https://www.canva.com/design/DAF0Xulu5TU/watch)
+[![Watch the video](assets/CleanShot.gif)](https://www.canva.com/design/DAF0Xulu5TU/watch)
 
 
 ### Credits
