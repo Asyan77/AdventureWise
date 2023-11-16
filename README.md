@@ -20,69 +20,113 @@ This app uses the following open-source packages:
  - [Teleport Pubic APIS](https://developers.teleport.org/api/)
 
 ### Components
-One of the few challenges was connecting the svgMap to link with data from TravelTables since svgMap's country codes were two-letters (ex: CN) and TravelTable's country codes are three-letters (ex: CHN), or it was the country name in a string (ex:'China'). Using the following code, plus creating a local file with city names, I was then able to link country to country to city, to data! 
+Three of the most challenging peices to this app was creating the data cards, getting them to pin/unpin, and rotate properly according to if they were pinned or not. Here's how I solved these issues: 
+
+1. Creating Data Cards - The data cards are pulling data from 2 seperate APIs so the timing of promises and population of the infomation was tricky. Also using the result from one API to populate data from the second API was challenging. I ran into the issue where if the there was no url for a country the data card wouldn't create at all. I also had account for the `saveBtn.innerHTML` and the `parentDiv.classList` so that upon creation of datacards it was set properly and that I could toggle their state later in the code.
 ```
-function getCountryNameByCode(countryCode) {
-    if (countryCode in countryCodes) {
-      return countryCodes[countryCode];
+async function createDataCards (city, country, infoArray, parentDiv)  {
+  let url;
+  clearDataCardsBtn.classList.remove("hide");
+  clearDataCardsBtn.classList.add("show");
+  parentDiv.classList.add("unpinned")
+
+  saveBtn = document.createElement("button");
+  saveBtn.id = "pin"
+  saveBtn.innerHTML = "pin"
+  
+  return await getTeleportAPI(city)
+  .then((res) => {
+    url = getCityUrlLink(res)
+    if (url === null) {
+      const h1 = document.createElement('h1');
+      h1.id = "data-card-h1"
+      h1.innerHTML = `${city}, ${country}`;
+      parentDiv.appendChild(h1);
+      infoArray.forEach(item => parentDiv.appendChild(item));
+      parentDiv.appendChild(saveBtn);
+      saveBtn.addEventListener("click", handleSaveBtnClick)
+      return parentDiv;
     } else {
-      return 'Country code not found';
+      const h1 = document.createElement('h1');
+      h1.id = "data-card-h1-with-link"
+      const linkText = `<a href="${url}" target="_blank" >${city}, ${country}</a>`
+      h1.innerHTML = linkText
+      parentDiv.appendChild(h1);
+      infoArray.forEach(item => parentDiv.appendChild(item)); 
+      parentDiv.appendChild(saveBtn)
+      saveBtn.addEventListener("click", handleSaveBtnClick)
+      return parentDiv;
+    }
+  })
+}
+  ```
+2. Pinning & Unpinning Data Cards - It took many tried to figure out where to add the event listener and how to change/update an attribute, and how to use that attribute to toggle between state. You can see in the code above that I ultimately chose to add the event listener to each card as it was created. In the code blocks below you can see how I update the attributes in the `handleSaveBtnClick`, and how I used those attributes in the `clearUnpinnedDataCards` function to determine which cards to keep and remove. 
+
+```
+  function handleSaveBtnClick (e) {
+  const btn = e.target
+  const card = e.target.parentNode
+  if (card.classList.contains("pinned") ) {
+    card.classList.remove("pinned");
+    card.classList.add("unpinned")
+    btn.innerHTML = "pin"
+  } else {
+    card.classList.add("pinned");
+    card.classList.remove("unpinned");
+    btn.innerHTML = "remove pin"
+  }
+}
+```
+
+```
+ function clearUnpinnedDataCards (e) {
+  const arrayOfChildren = Array.from(dataCardBody.children);
+
+  arrayOfChildren.forEach(function(child) {
+    if (!child.classList.contains("pinned")) {
+      dataCardBody.removeChild(child)    
+      } 
+    })
+
+    if (dataCardBody.children.length === 0) {
+      clearDataCardsBtn.classList.add("hide")
+      clearDataCardsBtn.classList.remove("show")
+    }
+}
+  ```
+
+3. Rotating Data Cards - I wanted the cards populate only up to four card, no duplicates, and starting from left to right. I needed to check if cards were pinned/unpinned so that pinned cards would not be rotated out of the deck. 
+
+```
+function rotateUnpinnedChildren(cards, div) {
+  const unpinnedChildren = Array.from(cards.children).filter(child => !child.classList.contains("pinned"));
+
+  const hasNoDuplicateText = () => {
+    let elementExists = unpinnedChildren.some(element => (element.textContent || element.innerText) === div.textContent);
+
+    if (!elementExists) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  if (cards.children.length === 4 && hasNoDuplicateText()) {
+    let firstElement = unpinnedChildren[0];
+
+    firstElement.parentNode.removeChild(firstElement);
+    if (hasNoDuplicateText()) {
+      cards.appendChild(div);
+    }
+  } else {
+    if (hasNoDuplicateText()) {
+      cards.appendChild(div);
     }
   }
-  function getCityNameByCode(countryCode) {
-    if (countryCode in cityNamesList) {
-      return cityNamesList[countryCode];
-    } else {
-      return 'CityName not found';
-    }
-  } 
+}
+```
 
-  getCityCostData(countryName, cityName)
-        .then((div) => { 
-            return countryInformation.set(countryId, div) 
-        })
-        .then(result => result.get(countryId))
-        .then((div) => {
-            const body = document.querySelector("#body");
-            rotateChildrenInOrder(body, div)
-    })
-  
-  ```
-
-  Another couple challenges I ran into while developing is that I was not able to compare the data side by side. And on top of that I was often getting duplicate countries when I accidentally hovered. I managed to solve these issues using the following code: 
-
-  ```
-   function rotateChildrenInOrder(body, div) {
-        const totalChildren = body.children.length;
-        // Convert HTMLCollection to Array
-        let arrayFromCollection = Array.from(body.children);
-
-        const hasNoDuplicateText = () => {
-          let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
-
-          // If the element doesn't exist, append it
-          if (!elementExists) {
-            return true
-          } else {
-            console.log("An element with the same text content already exists in the collection.");
-            return false
-          }
-        }
-        if (totalChildren >= 5) {
-              let firstElement = body.children[0];
-              firstElement.parentNode.removeChild(firstElement);
-              if (hasNoDuplicateText()) {
-                body.appendChild(div);
-              }
-            } else {
-              if (hasNoDuplicateText()) {
-                body.appendChild(div);
-              }
-            }
-     }
-  ```
-
-### Upcoming Features
+### Upcoming Features! 
 - Information of national and local food in the country/region
 - Information on history or attractions in the country/region
 - More categories compare

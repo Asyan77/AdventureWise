@@ -32,7 +32,7 @@ const ul = document.createElement("ul");
 ul.id = "popop-ul"
 
 const ol1 = document.createElement("ol")
-ol1.innerHTML= "Hover over a country for a brief description and rating"
+ol1.innerHTML= "Hover over the map for a brief description and rating of one of that country's most popular city"
 const br1 = document.createElement("br")
 
 const ol2 = document.createElement("ol")
@@ -40,11 +40,15 @@ ol2.innerHTML = "Click on up to 4 countries at a time to compare local living co
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("ol")
-ol3.innerHTML = "For more indepth destination details, click the underlined labels of the data cards"
+ol3.innerHTML = "Pin up to 4 data cards you want to keep around, and remove pin and clear all data cards to start fresh"
 const br3 = document.createElement("br")
 
 const ol4 = document.createElement("ol")
-ol4.innerHTML = "Happy Exploring!"
+ol4.innerHTML = "For more indepth destination details, click the underlined labels of the data cards"
+const br4 = document.createElement("br")
+
+const ol5 = document.createElement("ol")
+ol5.innerHTML = "Happy Exploring!"
 
 ul.appendChild(ol1)
 ul.appendChild(br1)
@@ -53,6 +57,8 @@ ul.appendChild(br2)
 ul.appendChild(ol3)
 ul.appendChild(br3)
 ul.appendChild(ol4)
+ul.appendChild(br4)
+ul.appendChild(ol5)
 
 popupContentDiv.appendChild(h2)
 popupContentDiv.appendChild(ul)
@@ -149,7 +155,6 @@ const map = new svgMap({
 
 // IF MAP IS LOADED, ADD EVENTLISTENER FOR CLICK ON EACH COUNTRY WHICH WILL THEN 
 //MAKE A NEW DATA CARD
-
 function handleMapClick(e) {
   if (e.target.tagName === 'path') {
     const countryCode = e.target.dataset.id;
@@ -163,7 +168,7 @@ function handleMapClick(e) {
       .then(result => result.get(countryCode))
       .then((div) => {
         dataCardBody = document.querySelector("#data-card-body");
-        rotateChildrenInOrder(dataCardBody, div);
+        rotateUnpinnedChildren(dataCardBody, div);
       });
   }
 }
@@ -260,16 +265,15 @@ async function getCityCostData(countryName, cityName) {
     }
 }
 
-
+//creates data card and save button
 async function createDataCards (city, country, infoArray, parentDiv)  {
   let url;
   clearDataCardsBtn.classList.remove("hide");
   clearDataCardsBtn.classList.add("show");
   parentDiv.classList.add("unpinned")
 
-  //creating a button <button id="pin">pin</button>
   saveBtn = document.createElement("button");
-  saveBtn.id === "pin"
+  saveBtn.id = "pin"
   saveBtn.innerHTML = "pin"
   
   return await getTeleportAPI(city)
@@ -282,7 +286,6 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item));
       parentDiv.appendChild(saveBtn);
-      // parentDiv.addEventListener("click", handleCardClick)
       saveBtn.addEventListener("click", handleSaveBtnClick)
       return parentDiv;
     } else {
@@ -293,7 +296,6 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item)); 
       parentDiv.appendChild(saveBtn)
-      // parentDiv.addEventListener("click", handleCardClick)
       saveBtn.addEventListener("click", handleSaveBtnClick)
       return parentDiv;
     }
@@ -340,22 +342,23 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
   }
 }
 
-function rotateChildrenInOrder(cards, div) {
-  const totalChildren = cards.children.length;
-  let arrayFromCollection = Array.from(cards.children);
+
+function rotateUnpinnedChildren(cards, div) {
+  const unpinnedChildren = Array.from(cards.children).filter(child => !child.classList.contains("pinned"));
 
   const hasNoDuplicateText = () => {
-    let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
-    
-    if (!elementExists) {
-      return true
-    } else {
-      return false
-    }
-  }
+    let elementExists = unpinnedChildren.some(element => (element.textContent || element.innerText) === div.textContent);
 
-  if (totalChildren === 4 && hasNoDuplicateText()) {
-    let firstElement = cards.children[0];
+    if (!elementExists) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  if (cards.children.length === 4 && hasNoDuplicateText()) {
+    let firstElement = unpinnedChildren[0];
+
     firstElement.parentNode.removeChild(firstElement);
     if (hasNoDuplicateText()) {
       cards.appendChild(div);
@@ -367,9 +370,9 @@ function rotateChildrenInOrder(cards, div) {
   }
 }
 
-clearDataCardsBtn.addEventListener("click", clearALLDataCards)
+clearDataCardsBtn.addEventListener("click", clearUnpinnedDataCards)
 
-function clearALLDataCards (e) {
+function clearUnpinnedDataCards (e) {
   const arrayOfChildren = Array.from(dataCardBody.children);
 
   arrayOfChildren.forEach(function(child) {
@@ -377,7 +380,7 @@ function clearALLDataCards (e) {
       dataCardBody.removeChild(child)    
       } 
     })
-    
+
     if(dataCardBody.children.length === 0) {
     clearDataCardsBtn.classList.add("hide")
     clearDataCardsBtn.classList.remove("show")
