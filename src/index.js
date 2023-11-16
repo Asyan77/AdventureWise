@@ -32,7 +32,7 @@ const ul = document.createElement("ul");
 ul.id = "popop-ul"
 
 const ol1 = document.createElement("ol")
-ol1.innerHTML= "Hover over the map for a brief description and rating of one of that country's most popular city"
+ol1.innerHTML= "Hover over the map for a brief description about the living qualities for one of the most popular cities from that country"
 const br1 = document.createElement("br")
 
 const ol2 = document.createElement("ol")
@@ -40,7 +40,7 @@ ol2.innerHTML = "Click on up to 4 countries at a time to compare local living co
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("ol")
-ol3.innerHTML = "Pin up to 4 data cards you want to keep around, and remove pin and clear all data cards to start fresh"
+ol3.innerHTML = "Pin the data cards you want to keep around, or remove pins and clear all data cards to start fresh"
 const br3 = document.createElement("br")
 
 const ol4 = document.createElement("ol")
