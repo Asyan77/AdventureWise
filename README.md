@@ -17,10 +17,10 @@ This app is intended to help you discover and/or research destinations for movin
 
 ### Credits
 This app uses the following open-source packages: 
- - [svgMAP](https://www.npmjs.com/package/svgmap) to render the map with countries and tooltip. 
- - [Traveltables API](https://traveltables.com/) for data on living costs
+ - [svgMAP](https://www.npmjs.com/package/svgmap) renders the map with countries and tooltip.
+ - [Traveltables API](https://traveltables.com/) provides the for data on living costs that goes into the data cards
+ - [Teleport Pubic APIS](https://developers.teleport.org/api/) provides the summary in the tooltip, the monthly salary data, and url links
  - [Node.js](https://nodejs.org/en) 
- - [Teleport Pubic APIS](https://developers.teleport.org/api/)
 
 ### Components
 Three of the most challenging peices to this app was creating the data cards, getting them to pin/unpin, and rotate properly according to if they were pinned or not. Here's how I solved these issues: 
