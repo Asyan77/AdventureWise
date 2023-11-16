@@ -409,7 +409,7 @@ h2 {
   font-family: "Montserrat", sans-serif;
 }
 
-#body {
+#data-card-body {
   display: flex;
   justify-content: flex-start;
   margin-left: 8%;

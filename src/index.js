@@ -9,6 +9,9 @@ const clearDataCardsBtn = document.getElementById("clear-data-cards-btn")
 clearDataCardsBtn.classList.add("hide")
 const svgMapInstance = document.getElementById('svgMap')
 let domain = 'https://food-around-the-world-proxy-server.onrender.com'
+let dataCardBody;
+let saveBtn;
+let dataCard;
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -147,26 +150,40 @@ const map = new svgMap({
 // IF MAP IS LOADED, ADD EVENTLISTENER FOR CLICK ON EACH COUNTRY WHICH WILL THEN 
 //MAKE A NEW DATA CARD
 
-if (map) {
-  document.querySelector('.svg-pan-zoom_viewport').addEventListener('click', (e) => {
-    if (e.target.tagName === 'path') {
-      const countryCode = e.target.dataset.id
-      const cityName = getCityNameByCode(countryCode);
-      const countryName = getCountryNameByCode(countryCode);
+function handleMapClick(e) {
+  if (e.target.tagName === 'path') {
+    const countryCode = e.target.dataset.id;
+    const cityName = getCityNameByCode(countryCode);
+    const countryName = getCountryNameByCode(countryCode);
 
-      getCityCostData(countryName, cityName)
-      .then((div) => { 
-        return countryInformation.set(countryCode, div) 
+    getCityCostData(countryName, cityName)
+      .then((div) => {
+        return countryInformation.set(countryCode, div);
       })
       .then(result => result.get(countryCode))
       .then((div) => {
-        const body = document.querySelector("#body")
-        rotateChildrenInOrder(body, div)
-      })
-    }
-  });
+        dataCardBody = document.querySelector("#data-card-body");
+        rotateChildrenInOrder(dataCardBody, div);
+      });
+  }
+}
+if (map) {
+  document.querySelector('.svg-pan-zoom_viewport').addEventListener('click', handleMapClick);
 }
 
+function handleSaveBtnClick (e) {
+  const btn = e.target
+  const card = e.target.parentNode
+  if (card.classList.contains("pinned") ) {
+    card.classList.remove("pinned");
+    card.classList.add("unpinned")
+    btn.innerHTML = "pin"
+  } else {
+    card.classList.add("pinned");
+    card.classList.remove("unpinned");
+    btn.innerHTML = "remove pin"
+  }
+}
 
 async function getTeleportAPI(city) {
   const url = `https://api.teleport.org/api/cities/?search=${city}&limit=1&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores`
@@ -243,12 +260,18 @@ async function getCityCostData(countryName, cityName) {
     }
 }
 
+
 async function createDataCards (city, country, infoArray, parentDiv)  {
   let url;
-  const body = document.getElementById("body")
-  clearDataCardsBtn.classList.remove("hide")
-  clearDataCardsBtn.classList.add("show")
+  clearDataCardsBtn.classList.remove("hide");
+  clearDataCardsBtn.classList.add("show");
+  parentDiv.classList.add("unpinned")
 
+  //creating a button <button id="pin">pin</button>
+  saveBtn = document.createElement("button");
+  saveBtn.id === "pin"
+  saveBtn.innerHTML = "pin"
+  
   return await getTeleportAPI(city)
   .then((res) => {
     url = getCityUrlLink(res)
@@ -258,6 +281,9 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       h1.innerHTML = `${city}, ${country}`;
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item));
+      parentDiv.appendChild(saveBtn);
+      // parentDiv.addEventListener("click", handleCardClick)
+      saveBtn.addEventListener("click", handleSaveBtnClick)
       return parentDiv;
     } else {
       const h1 = document.createElement('h1');
@@ -266,9 +292,20 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       h1.innerHTML = linkText
       parentDiv.appendChild(h1);
       infoArray.forEach(item => parentDiv.appendChild(item)); 
+      parentDiv.appendChild(saveBtn)
+      // parentDiv.addEventListener("click", handleCardClick)
+      saveBtn.addEventListener("click", handleSaveBtnClick)
       return parentDiv;
     }
   })
+  // <div class="wrapper unpinned">
+  // <h1> city, country (with link) </h1>
+  // <>item
+  // <>item
+  // <>item
+  // <>item
+  // <button id="pin">pin</button>
+// </div>
 }
 
 function getItemAvgUSDPriceByName(itemName, result, label) {
@@ -277,6 +314,7 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
   divEl.classList.add('row');
   const labelEl = document.createElement('label');
   labelEl.innerHTML = label;
+
 
   if (item) {
         const spanEl = document.createElement('span');
@@ -302,9 +340,9 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
   }
 }
 
-function rotateChildrenInOrder(body, div) {
-  const totalChildren = body.children.length;
-  let arrayFromCollection = Array.from(body.children);
+function rotateChildrenInOrder(cards, div) {
+  const totalChildren = cards.children.length;
+  let arrayFromCollection = Array.from(cards.children);
 
   const hasNoDuplicateText = () => {
     let elementExists = arrayFromCollection.some(element => (element.textContent || element.innerText) === div.textContent);
@@ -317,14 +355,14 @@ function rotateChildrenInOrder(body, div) {
   }
 
   if (totalChildren === 4 && hasNoDuplicateText()) {
-    let firstElement = body.children[0];
+    let firstElement = cards.children[0];
     firstElement.parentNode.removeChild(firstElement);
     if (hasNoDuplicateText()) {
-      body.appendChild(div);
+      cards.appendChild(div);
     }
   } else {
     if (hasNoDuplicateText()) {
-      body.appendChild(div);
+      cards.appendChild(div);
     }
   }
 }
@@ -332,10 +370,17 @@ function rotateChildrenInOrder(body, div) {
 clearDataCardsBtn.addEventListener("click", clearALLDataCards)
 
 function clearALLDataCards (e) {
-  let arrayOfChildren = Array.from(body.children);
-  arrayOfChildren.forEach(kid => body.removeChild(kid))
-  clearDataCardsBtn.classList.add("hide")
-  clearDataCardsBtn.classList.remove("show")
- 
+  const arrayOfChildren = Array.from(dataCardBody.children);
+
+  arrayOfChildren.forEach(function(child) {
+    if (!child.classList.contains("pinned")) {
+      dataCardBody.removeChild(child)    
+      } 
+    })
+    
+    if(dataCardBody.children.length === 0) {
+    clearDataCardsBtn.classList.add("hide")
+    clearDataCardsBtn.classList.remove("show")
+    }
 }
 
