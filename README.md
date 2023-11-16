@@ -11,6 +11,9 @@ This app is intended to help you discover and/or research destinations for movin
 
 [Start exploring!](https://asyan77.github.io/FoodAroundtheWorld/)
 
+### Video Demo 
+[![Watch the video](https://www.canva.com/design/DAF0Xulu5TU/watch)](https://www.canva.com/design/DAF0Xulu5TU/watch)
+
 
 ### Credits
 This app uses the following open-source packages: 
