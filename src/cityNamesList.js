@@ -164,7 +164,7 @@ export default {
     WS: 'Apia', 
     SA: 'Riyadh',
     SN: 'Foundiougne',
-    RS: 'Belgrade',
+    RS: 'Kikinda',
     SC: 'Mahé',
     SG: 'Singapore',
     SX: 'Philipsburg',

@@ -18,10 +18,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 13%;
+    margin-left: 12%;
     margin-right: 14%;
     padding-bottom: 8px;
     height: 16vh;
+    min-height: 130px;
+    width: 75%;
     // border: #000000 solid;
     // background-color: blue;
     // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
@@ -29,10 +31,10 @@ body {
 
 
 #header-pic1 {
-    margin-left: 50px;
+    margin-left: 90px;
     height: 100%;
     margin-top: 2%;
-    width: 100px;
+    min-width: 100px;
 }
 
 #title {
@@ -100,8 +102,12 @@ body {
   .popup-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+ 
     align-items: center;
+    min-height: 650px;
+    min-width: 300px;
+    // background-color: orange;
+
 }
 
 h2 {
@@ -158,16 +164,19 @@ h2 {
     margin-left: 8%;
     margin-right: 8%;
     padding-top: 12px;
+    min-width: 84%;
     // border: #000000 solid;
 }
 
 .wrapper { // each individual data card
-    width: 18vw;
+    width: 350px;
+    min-width: 200px;
     padding: 12px;
     padding-top: 20px;
     background-color: lavenderblush;
     border: #3f0ba8 solid 5px;
     margin-right: 1%;
+    height: 320px;
     // padding-right: 3%;
 
     #data-card-h1 { 
@@ -204,7 +213,7 @@ h2 {
     align-items: center;
     font-size: 16px;
     height: 40px;
-    // width: 100%;
+    min-width: 100%;
     // border-right: #000000 solid 2px;
     // margin-left: 10px;
     // padding-right: 4%;
@@ -241,6 +250,7 @@ h2 {
     font-family:'Raleway', sans-serif; 
     font-size:medium;
     border-color: #5f32b3;
+    margin-top: 20px;
 }
 
 // #remove-pin 
@@ -274,7 +284,7 @@ h2 {
     height: 7vh;
     width: 16vw;
     margin-left: 41%;
-    margin-top: 4px;
+    margin-top: 10px;
     background-color: rgb(85, 89, 210);
     font-size: x-large;
     font-family:'Edu SA Beginner', cursive;
