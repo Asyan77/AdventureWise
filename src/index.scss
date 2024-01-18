@@ -29,18 +29,19 @@ body {
 
 
 #header-pic1 {
-    margin-left: 4%;
+    margin-left: 50px;
     height: 100%;
     margin-top: 2%;
+    width: 100px;
 }
 
 #title {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    min-width: 750px;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 6vw;
+    font-size: 100px;
     font-weight: 100;
     margin-top: 8%;
     color: rgb(118, 216, 159);
@@ -96,10 +97,27 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  h2 {
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
     display: flex;
     justify-content: center;
-    padding-right: 20px;
+    align-items: center;
+    // padding-right: 20px;
+    // background-color: pink;
+}
+
+#popup-ul {
+    // margin-right: 10%;
+    text-align: center;
+    // background-color: #5f32b3;
+
   }
 
 //HOVER TOOLTIP STYLES-------------------------------->

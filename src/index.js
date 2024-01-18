@@ -8,7 +8,8 @@ const popup = document.getElementById("popup");
 const clearDataCardsBtn = document.getElementById("clear-data-cards-btn")
 clearDataCardsBtn.classList.add("hide")
 const svgMapInstance = document.getElementById('svgMap')
-let domain = 'https://food-around-the-world-proxy-server.onrender.com'
+// let domain = 'https://food-around-the-world-proxy-server.onrender.com'
+let domain = 'https://asyan77.github.io/AdventureWise/'
 let dataCardBody;
 let saveBtn;
 let dataCard;
@@ -25,30 +26,31 @@ const popupContentDiv = document.createElement("div");
 popupContentDiv.classList.add("popup-content")
 
 const h2 = document.createElement("h2")
-h2.innerHTML =("Discover your next journey!")
+h2.innerHTML =("Discover your next journey")
 h2.style.color="purple"
 
-const ul = document.createElement("ul");
-ul.id = "popop-ul"
+const ul = document.createElement("div");
+ul.id = "popup-ul"
 
-const ol1 = document.createElement("ol")
+const ol1 = document.createElement("div")
 ol1.innerHTML= "Hover over the map for a brief description about the living qualities for one of the most popular cities from that country"
 const br1 = document.createElement("br")
 
-const ol2 = document.createElement("ol")
+const ol2 = document.createElement("div")
 ol2.innerHTML = "Click on up to 4 countries at a time to compare local living costs and average salary, in $USD"
 const br2 = document.createElement("br")
 
-const ol3 = document.createElement("ol")
+const ol3 = document.createElement("div")
 ol3.innerHTML = "Pin the data cards you want to keep around, or remove pins and clear all data cards to start fresh"
 const br3 = document.createElement("br")
 
-const ol4 = document.createElement("ol")
+const ol4 = document.createElement("div")
 ol4.innerHTML = "For more indepth destination details, click the underlined labels of the data cards"
 const br4 = document.createElement("br")
 
-const ol5 = document.createElement("ol")
+const ol5 = document.createElement("div")
 ol5.innerHTML = "Happy Exploring!"
+const br5 = document.createElement("br")
 
 ul.appendChild(ol1)
 ul.appendChild(br1)
@@ -106,13 +108,13 @@ const map = new svgMap({
     const cityName = getCityNameByCode(countryId);
     const countryName = getCountryNameByCode(countryId);
 
-    getTeleportAPI(cityName) 
-    .then((res) => {
-      const summary = getCitySummary(res)
-      if (summary) {
-        document.getElementById(`summary-${countryId}`).innerHTML = summary
-      }
-    })
+    // getTeleportAPI(cityName) 
+    // .then((res) => {
+    //   const summary = getCitySummary(res)
+    //   if (summary) {
+    //     document.getElementById(`summary-${countryId}`).innerHTML = summary
+    //   }
+    // })
 
       const hoverDivEle = document.createElement('div');
       hoverDivEle.classList.add('hover-wrapper');
@@ -190,41 +192,41 @@ function handleSaveBtnClick (e) {
   }
 }
 
-async function getTeleportAPI(city) {
-  const url = `https://api.teleport.org/api/cities/?search=${city}&limit=1&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores`
-  const options = {
-    method: "GET",
-    headers: {
-     "Accept": "application/vnd.teleport.v1+json"
-    }
-  }
-  try {
-    const response = await fetch(url, options);
-      if (response.ok) {
-        const result = await response.json();
-        return result
-      } 
-  } catch (error) {
-  }
-}
+// async function getTeleportAPI(city) {
+//   const url = `https://api.teleport.org/api/cities/?search=${city}&limit=1&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores`
+//   const options = {
+//     method: "GET",
+//     headers: {
+//      "Accept": "application/vnd.teleport.v1+json"
+//     }
+//   }
+//   try {
+//     const response = await fetch(url, options);
+//       if (response.ok) {
+//         const result = await response.json();
+//         return result
+//       } 
+//   } catch (error) {
+//   }
+// }
 
-function getCitySummary (response) {
-  if(response._embedded['city:search-results'][0]?._embedded['city:item']?._embedded) {
-    const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
-    return summary
-  } else {
-    return null
-  }
-}
+// function getCitySummary (response) {
+//   if(response._embedded['city:search-results'][0]?._embedded['city:item']?._embedded) {
+//     const summary = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area']._embedded['ua:scores'].summary;
+//     return summary
+//   } else {
+//     return null
+//   }
+// }
 
-function getCityUrlLink(response) {
-  if (response._embedded['city:search-results'][0]?._embedded['city:item']?._embedded) {
-    const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
-    return url
-  } else {
-    return null
-  }
-}
+// function getCityUrlLink(response) {
+//   if (response._embedded['city:search-results'][0]?._embedded['city:item']?._embedded) {
+//     const url = response._embedded['city:search-results'][0]._embedded['city:item']._embedded['city:urban_area'].teleport_city_url;
+//     return url
+//   } else {
+//     return null
+//   }
+// }
 
 // fetching to get cost data, then calling createDataCard to make the data cards.
 async function getCityCostData(countryName, cityName) {
@@ -266,8 +268,7 @@ async function getCityCostData(countryName, cityName) {
 }
 
 //creates data card and save button
-async function createDataCards (city, country, infoArray, parentDiv)  {
-  let url;
+function createDataCards (city, country, infoArray, parentDiv)  {
   clearDataCardsBtn.classList.remove("hide");
   clearDataCardsBtn.classList.add("show");
   parentDiv.classList.add("unpinned")
@@ -276,10 +277,11 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
   saveBtn.id = "pin"
   saveBtn.innerHTML = "pin"
   
-  return await getTeleportAPI(city)
-  .then((res) => {
-    url = getCityUrlLink(res)
-    if (url === null) {
+  // return 
+  // await getTeleportAPI(city)
+  // .then((res) => {
+    // url = getCityUrlLink(res)
+    // if (url === null) {
       const h1 = document.createElement('h1');
       h1.id = "data-card-h1"
       h1.innerHTML = `${city}, ${country}`;
@@ -288,18 +290,19 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
       parentDiv.appendChild(saveBtn);
       saveBtn.addEventListener("click", handleSaveBtnClick)
       return parentDiv;
-    } else {
-      const h1 = document.createElement('h1');
-      h1.id = "data-card-h1-with-link"
-      const linkText = `<a href="${url}" target="_blank" >${city}, ${country}</a>`
-      h1.innerHTML = linkText
-      parentDiv.appendChild(h1);
-      infoArray.forEach(item => parentDiv.appendChild(item)); 
-      parentDiv.appendChild(saveBtn)
-      saveBtn.addEventListener("click", handleSaveBtnClick)
-      return parentDiv;
-    }
-  })
+    // } 
+    // else {
+    //   const h1 = document.createElement('h1');
+    //   h1.id = "data-card-h1-with-link"
+    //   const linkText = `<a href="${url}" target="_blank" >${city}, ${country}</a>`
+    //   h1.innerHTML = linkText
+    //   parentDiv.appendChild(h1);
+    //   infoArray.forEach(item => parentDiv.appendChild(item)); 
+    //   parentDiv.appendChild(saveBtn)
+    //   saveBtn.addEventListener("click", handleSaveBtnClick)
+    //   return parentDiv;
+    // }
+  // })
   // <div class="wrapper unpinned">
   // <h1> city, country (with link) </h1>
   // <>item
@@ -345,7 +348,8 @@ function getItemAvgUSDPriceByName(itemName, result, label) {
 
 function rotateUnpinnedChildren(cards, div) {
   const unpinnedChildren = Array.from(cards.children).filter(child => !child.classList.contains("pinned"));
-
+  console.log(div, 'div')
+  
   const hasNoDuplicateText = () => {
     let elementExists = unpinnedChildren.some(element => (element.textContent || element.innerText) === div.textContent);
 
@@ -386,4 +390,5 @@ function clearUnpinnedDataCards (e) {
     clearDataCardsBtn.classList.remove("show")
     }
 }
+
 
