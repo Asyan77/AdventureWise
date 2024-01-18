@@ -33,20 +33,20 @@ const ul = document.createElement("div");
 ul.id = "popup-ul"
 
 const ol1 = document.createElement("div")
-ol1.innerHTML= "Hover over the map for a brief description about the living qualities for one of the most popular cities from that country"
+ol1.innerHTML= "Hover over the map to see which country you'd like to view data on"
 const br1 = document.createElement("br")
 
 const ol2 = document.createElement("div")
-ol2.innerHTML = "Click on up to 4 countries at a time to compare local living costs and average salary, in $USD"
+ol2.innerHTML = "Select by clicking on up to 4 countries at a time to compare various local living costs and average salary, in $USD"
 const br2 = document.createElement("br")
 
 const ol3 = document.createElement("div")
 ol3.innerHTML = "Pin the data cards you want to keep around, or remove pins and clear all data cards to start fresh"
 const br3 = document.createElement("br")
 
-const ol4 = document.createElement("div")
-ol4.innerHTML = "For more indepth destination details, click the underlined labels of the data cards"
-const br4 = document.createElement("br")
+// const ol4 = document.createElement("div")
+// ol4.innerHTML = "For more indepth destination details, click the underlined labels of the data cards"
+// const br4 = document.createElement("br")
 
 const ol5 = document.createElement("div")
 ol5.innerHTML = "Happy Exploring!"
@@ -58,8 +58,8 @@ ul.appendChild(ol2)
 ul.appendChild(br2)
 ul.appendChild(ol3)
 ul.appendChild(br3)
-ul.appendChild(ol4)
-ul.appendChild(br4)
+// ul.appendChild(ol4)
+// ul.appendChild(br4)
 ul.appendChild(ol5)
 
 popupContentDiv.appendChild(h2)
