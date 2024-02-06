@@ -3,7 +3,7 @@
 ### Basic Overview
 This app is intended to help you discover and/or research destinations for moving abroad or for long term visits, depending on which factors are important for you. There are 3 ways to interact with this app:
 
-1. As you hover over countries on the map, a tool tip appears with a brief description and rating of a major city from that country.
+1. As you hover over countries on the map, a tool tip appears with the country flag and the name of a major city from that country.
 
 2. Clicking on a country will produce a data card for the major city of that country. The data card displays four categories of basic living costs, plus the average salary. You can compare up to 4 location at a time. There is a button underneath the cards to clear you selection so you can choose new areas to compare. 
 
@@ -97,6 +97,7 @@ async function createDataCards (city, country, infoArray, parentDiv)  {
     }
 }
   ```
+
 
 3. Rotating Data Cards - I wanted the cards populate only up to four card, no duplicates, and starting from left to right. I needed to check if cards were pinned/unpinned so that pinned cards would not be rotated out of the deck. 
 
