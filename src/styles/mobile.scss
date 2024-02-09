@@ -1,0 +1,268 @@
+/* Mobile Phones */
+@media only screen and (max-width: 600px) {
+    /* Add mobile-specific styles here */
+    #header {
+       width: 100%;
+        // background-color: blue;
+        // cursor: url("https://media.tenor.com/0vtYbnbaThIAAAAi/abiera-travel.gif"), auto;
+    }
+    
+    
+    #header-pic1 {
+        margin-left: 90px;
+        height: 80%;
+        margin-top: 2%;
+        min-width: 100px;
+    }
+    
+    #title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // min-width: 750px;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 30px;
+        font-weight: 100;
+        color: rgb(118, 216, 159);
+        // border: #000000 solid;
+        // background-color: #736ab8;
+    }
+
+    
+    #header-pic3 {
+        height: 70%;
+        padding-top: 1.5%;
+        margin-right: 1%;
+        // padding-right: 7%;
+        // background-color: cadetblue;
+        // border: #000000 solid;
+    }
+    
+    .linkedIn {
+        height: 22vh;
+        padding-top: 9%;
+        margin-right: 2%;
+        color:  #2363d1;
+        // background-color: aquamarine;
+    }
+    
+    .github {
+        padding-top: 9%;
+        // margin-right: 4%;
+        padding-right: 3%;
+        color:  #5f32b3;
+        // background-color: aquamarine;
+    }
+    
+    //POP-UP STYLES ----------------------------------->
+    
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        // width: 100%;
+        // height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    
+      .popup-content {
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        width: 450px;
+        // min-height: 250px;
+        // min-width: 300px;
+        margin-left: 45%;
+        border:  rgb(118, 216, 159) solid 3px;
+        // background-color: orange;
+        
+    }
+    
+    h2 {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        text-align: center;
+        font-size: 30px;
+        width: 100%;
+        padding-right: 30px;
+        color: purple;
+        // background-color: pink;
+    }
+    
+    #popup-ul {
+        font-size: 26px;
+        background-color: #5f32b3;
+    
+      }
+    
+    //HOVER TOOLTIP STYLES-------------------------------->
+    
+    .hover-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 10%;
+        width:22vw;
+        padding: 12px;
+        padding-top: 20px;
+        background-color: lavenderblush;
+        border: #3f0ba8 solid 5px;
+        margin-right: 1%;
+    }
+    
+    .flag {
+        width: 69%;
+        padding-left: 40%;
+    }
+    .hover-h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        background-color: cadetblue;
+    
+    }
+    
+    .summary {
+        font-family: 'Montserrat', sans-serif;
+        // background-color: brown;
+    
+    }
+      
+    // DATA CARDS ----------------------------------------->
+    #data-card-body { //box for all the data cards
+        display: flex;
+        justify-content:flex-start;
+        margin-left: 8%;
+        margin-right: 8%;
+        padding-top: 12px;
+        min-width: 84%;
+        // border: #000000 solid;
+    }
+    
+    .wrapper { // each individual data card
+        width: 350px;
+        min-width: 200px;
+        padding: 12px;
+        padding-top: 20px;
+        background-color: lavenderblush;
+        border: #3f0ba8 solid 5px;
+        margin-right: 1%;
+        height: 320px;
+        // padding-right: 3%;
+    
+        #data-card-h1 { 
+            width: 18vw;
+            position: relative;
+            font-size: 30px;
+            font-family: 'Edu SA Beginner', cursive;
+            font-weight: 300;
+            margin: 0 0 20px 0;
+            display: flex;
+            justify-content: center;
+            color: #3f0ba8;
+            border-radius: 15%;
+            // background-color: rgb(243, 239, 185);
+            // border-bottom: 3px solid rgb(216, 16, 173);
+            // border: #5f32b3 solid;
+        }
+    }
+    
+    #data-card-h1-with-link {
+        width: 18vw;
+        position: relative;
+        font-family: 'Edu SA Beginner', cursive;
+        color: #3f0ba8;
+        font-weight: 300;
+        margin: 0 0 20px 0;
+        display: flex;
+        justify-content: center;
+        border-radius: 15%;
+    }
+    
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        height: 40px;
+        min-width: 100%;
+        // border-right: #000000 solid 2px;
+        // margin-left: 10px;
+        // padding-right: 4%;
+        // background-color: rgb(29, 10, 91);
+        // background-color: rgb(56, 29, 92);
+        
+        label {
+            // color: #3f0ba8;
+            color: #666;
+            font-family: 'Montserrat', sans-serif;
+            flex-grow: 1;
+            padding-left: 2px;
+        }
+    
+        span {
+            display: flex;
+            justify-content: flex-end;
+            color: rgb(7, 177, 7);
+            font-size: 14px;
+            font-family: 'Victor Mono', monospace;
+            padding-right: 10px;
+            // background-color: aqua;
+    
+        }
+    
+    }
+    
+    #pin {
+        // background-color: #5f32b3;
+        width: 40%;
+        height: 10%;
+        margin-left: 30%;
+        border-radius: 5%;
+        font-family:'Raleway', sans-serif; 
+        font-size:medium;
+        border-color: #5f32b3;
+        margin-top: 20px;
+    }
+    
+    // #remove-pin 
+    
+    // SAVED DATA CARDS ------------------->
+    
+    // .body-saved {
+    //     display: flex;
+    //     justify-content:flex-start;
+    //     margin-left: 8%;
+    //     margin-right: 8%;
+    //     padding-top: 12px;
+    //     // border: #000000 solid;
+    // }
+    
+    
+    
+    
+    // CLEAR ALL DATA CARDS BTN-----------
+    .hide {
+        display: none;
+    }
+    
+    .show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(63, 200, 111);
+        border-radius: 5px;
+        border: rgb(30, 7, 157) solid 3px;
+        height: 7vh;
+        width: 16vw;
+        margin-left: 41%;
+        margin-top: 10px;
+        background-color: rgb(85, 89, 210);
+        font-size: x-large;
+        font-family:'Edu SA Beginner', cursive;
+    }
+    
+    
+}

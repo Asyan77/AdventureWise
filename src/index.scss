@@ -4,12 +4,20 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    // border: #050505 solid;
     background-color: #0a4886;
-    // cursor: url(""), auto;
-    // cursor: none;
-    // cursor: url('assets/plane-cursor-img.gif'),auto;
+}
+
+
+
+
+/* Browsers (Default styles for desktop) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    /* Add browser-specific styles here */
+}
+
+/* iPads and Tablets */
+@media only screen and (min-width: 1025px) {
+    /* Add tablet-specific styles here */
 }
 
 //HEADER STYLES ------------------------------->
@@ -167,10 +175,14 @@ h2 {
     margin-right: 8%;
     padding-top: 12px;
     min-width: 84%;
-    // border: #000000 solid;
+    border: #000000 solid;
 }
 
 .wrapper { // each individual data card
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 350px;
     min-width: 200px;
     padding: 12px;
@@ -182,10 +194,13 @@ h2 {
     // padding-right: 3%;
 
     #data-card-h1 { 
+        text-align: center;
         width: 18vw;
+        width: 300px;
         position: relative;
         font-family: 'Edu SA Beginner', cursive;
         font-weight: 300;
+        font-size: 1.7em;
         margin: 0 0 20px 0;
         display: flex;
         justify-content: center;
@@ -247,7 +262,7 @@ h2 {
     // background-color: #5f32b3;
     width: 40%;
     height: 10%;
-    margin-left: 30%;
+    // margin-left: 30%;
     border-radius: 5%;
     font-family:'Raleway', sans-serif; 
     font-size:medium;
@@ -285,6 +300,7 @@ h2 {
     border: rgb(30, 7, 157) solid 3px;
     height: 7vh;
     width: 16vw;
+    min-width: 200px;
     margin-left: 41%;
     margin-top: 10px;
     background-color: rgb(85, 89, 210);

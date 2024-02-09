@@ -27,7 +27,6 @@ popupContentDiv.classList.add("popup-content")
 
 const h2 = document.createElement("h2")
 h2.innerHTML =("Discover your next journey")
-h2.style.color="purple"
 
 const ul = document.createElement("div");
 ul.id = "popup-ul"

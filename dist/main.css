@@ -308,6 +308,186 @@ h2 {
   padding-left: 50px;
 }
 
+/* Mobile Phones */
+@media only screen and (max-width: 600px) {
+  /* Add mobile-specific styles here */
+  #header {
+    width: 100%;
+  }
+  #header-pic1 {
+    margin-left: 90px;
+    height: 80%;
+    margin-top: 2%;
+    min-width: 100px;
+  }
+  #title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+    color: rgb(118, 216, 159);
+  }
+  #header-pic3 {
+    height: 70%;
+    padding-top: 1.5%;
+    margin-right: 1%;
+  }
+  .linkedIn {
+    height: 22vh;
+    padding-top: 9%;
+    margin-right: 2%;
+    color: #2363d1;
+  }
+  .github {
+    padding-top: 9%;
+    padding-right: 3%;
+    color: #5f32b3;
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 450px;
+    margin-left: 45%;
+    border: rgb(118, 216, 159) solid 3px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    padding-right: 30px;
+    color: purple;
+  }
+  #popup-ul {
+    font-size: 26px;
+    background-color: #5f32b3;
+  }
+  .hover-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    width: 22vw;
+    padding: 12px;
+    padding-top: 20px;
+    background-color: lavenderblush;
+    border: #3f0ba8 solid 5px;
+    margin-right: 1%;
+  }
+  .flag {
+    width: 69%;
+    padding-left: 40%;
+  }
+  .hover-h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    background-color: cadetblue;
+  }
+  .summary {
+    font-family: "Montserrat", sans-serif;
+  }
+  #data-card-body {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding-top: 12px;
+    min-width: 84%;
+  }
+  .wrapper {
+    width: 350px;
+    min-width: 200px;
+    padding: 12px;
+    padding-top: 20px;
+    background-color: lavenderblush;
+    border: #3f0ba8 solid 5px;
+    margin-right: 1%;
+    height: 320px;
+  }
+  .wrapper #data-card-h1 {
+    width: 18vw;
+    position: relative;
+    font-size: 30px;
+    font-family: "Edu SA Beginner", cursive;
+    font-weight: 300;
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: center;
+    color: #3f0ba8;
+    border-radius: 15%;
+  }
+  #data-card-h1-with-link {
+    width: 18vw;
+    position: relative;
+    font-family: "Edu SA Beginner", cursive;
+    color: #3f0ba8;
+    font-weight: 300;
+    margin: 0 0 20px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 15%;
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    height: 40px;
+    min-width: 100%;
+  }
+  .row label {
+    color: #666;
+    font-family: "Montserrat", sans-serif;
+    flex-grow: 1;
+    padding-left: 2px;
+  }
+  .row span {
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(7, 177, 7);
+    font-size: 14px;
+    font-family: "Victor Mono", monospace;
+    padding-right: 10px;
+  }
+  #pin {
+    width: 40%;
+    height: 10%;
+    margin-left: 30%;
+    border-radius: 5%;
+    font-family: "Raleway", sans-serif;
+    font-size: medium;
+    border-color: #5f32b3;
+    margin-top: 20px;
+  }
+  .hide {
+    display: none;
+  }
+  .show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(63, 200, 111);
+    border-radius: 5px;
+    border: rgb(30, 7, 157) solid 3px;
+    height: 7vh;
+    width: 16vw;
+    margin-left: 41%;
+    margin-top: 10px;
+    background-color: rgb(85, 89, 210);
+    font-size: x-large;
+    font-family: "Edu SA Beginner", cursive;
+  }
+}
 body {
   display: flex;
   flex-direction: column;
@@ -315,6 +495,14 @@ body {
   background-color: #0a4886;
 }
 
+/* Browsers (Default styles for desktop) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  /* Add browser-specific styles here */
+}
+/* iPads and Tablets */
+@media only screen and (min-width: 1025px) {
+  /* Add tablet-specific styles here */
+}
 #header {
   display: flex;
   flex-direction: row;
@@ -431,9 +619,14 @@ h2 {
   margin-right: 8%;
   padding-top: 12px;
   min-width: 84%;
+  border: #000000 solid;
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 350px;
   min-width: 200px;
   padding: 12px;
@@ -444,10 +637,13 @@ h2 {
   height: 320px;
 }
 .wrapper #data-card-h1 {
+  text-align: center;
   width: 18vw;
+  width: 300px;
   position: relative;
   font-family: "Edu SA Beginner", cursive;
   font-weight: 300;
+  font-size: 1.7em;
   margin: 0 0 20px 0;
   display: flex;
   justify-content: center;
@@ -493,7 +689,6 @@ h2 {
 #pin {
   width: 40%;
   height: 10%;
-  margin-left: 30%;
   border-radius: 5%;
   font-family: "Raleway", sans-serif;
   font-size: medium;
@@ -514,6 +709,7 @@ h2 {
   border: rgb(30, 7, 157) solid 3px;
   height: 7vh;
   width: 16vw;
+  min-width: 200px;
   margin-left: 41%;
   margin-top: 10px;
   background-color: rgb(85, 89, 210);
