@@ -1,6 +1,9 @@
 /* Mobile Phones */
 @media only screen and (max-width: 600px) {
 
+    * {
+        box-sizing: border-box;
+      }
 
     #header {
        width: 100%;
@@ -14,16 +17,20 @@
         height: 80%;
         margin-top: 2%;
         min-width: 30px;
+        float: left;
     }
     
     #title {
+        box-sizing: border-box;
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: 'Josefin Sans', sans-serif;
         font-size: 10px;
         font-weight: 100;
+        width: 20vw;
         color: rgb(118, 216, 159);
+        float: left;
         // border: #000000 solid;
         background-color: #736ab8;
     }
@@ -72,7 +79,7 @@
       .popup-content {
         display: flex;
         flex-direction: column;
-        height: 150px;
+        height: 75%;
         width: 450px;
         // min-height: 250px;
         // min-width: 300px;
@@ -135,7 +142,8 @@
     // DATA CARDS ----------------------------------------->
     #data-card-body { //box for all the data cards
         display: flex;
-        justify-content:flex-start;
+        flex-direction: column;
+        // justify-content:flex-start;
         margin-left: 8%;
         margin-right: 8%;
         padding-top: 12px;
@@ -150,9 +158,8 @@
         padding-top: 20px;
         background-color: lavenderblush;
         border: #3f0ba8 solid 5px;
-        margin-right: 1%;
         height: 320px;
-        // padding-right: 3%;
+       margin-top: 5%;
     
         #data-card-h1 { 
             width: 18vw;
@@ -221,7 +228,6 @@
         // background-color: #5f32b3;
         width: 40%;
         height: 10%;
-        margin-left: 30%;
         border-radius: 5%;
         font-family:'Raleway', sans-serif; 
         font-size:medium;
@@ -259,7 +265,6 @@
         border: rgb(30, 7, 157) solid 3px;
         height: 7vh;
         width: 16vw;
-        margin-left: 41%;
         margin-top: 10px;
         background-color: rgb(85, 89, 210);
         font-size: x-large;
